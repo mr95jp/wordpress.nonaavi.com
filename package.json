@@ -11,7 +11,7 @@
     "check": "astro check",
     "sync:articles": "node scripts/sync-articles.mjs",
     "check:site": "node scripts/check-site.mjs",
-    "deploy": "astro build && node scripts/check-site.mjs && wrangler pages deploy dist --project-name wordpress-noanavi-com"
+    "deploy": "astro build && node scripts/check-site.mjs && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.1",

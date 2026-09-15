@@ -82,30 +82,33 @@ src/pages/                ルーティング（[slug] / topics/[hub] / symptoms 
 
 ## 配信
 
-**Cloudflare Pages** で配信する。GitHub の `main` に push すると Cloudflare 側でビルドして公開される。
+**Cloudflare Workers の静的アセット**で配信する（Worker 名 `wordpress-nonaavi-com`）。
+GitHub の `main` に push すると Workers Builds がビルドして公開する。
 全ページ静的なので **`@astrojs/cloudflare` アダプターは入れない**
 （[Astro のガイド](https://docs.astro.build/ja/guides/deploy/cloudflare/) の静的サイト向け設定）。
 
-| Pages の設定 | 値 |
+| Workers Builds の設定 | 値 |
 |---|---|
-| フレームワーク プリセット | Astro |
-| ビルドコマンド | `pnpm build` |
-| ビルド出力ディレクトリ | `dist` |
-| 環境変数 | `PUBLIC_GA_ID`（GA4 の測定 ID） |
-| Node のバージョン | `.node-version` に書いた版が使われる |
+| ビルドコマンド | `pnpm run build` |
+| デプロイコマンド | `npx wrangler deploy` |
+| ビルド変数 | `PUBLIC_GA_ID`（GA4 の測定 ID） |
+| Node / pnpm | `.node-version` と `packageManager` の版が使われる |
 
-独自ドメイン `wordpress.noanavi.com` は、Pages の「カスタムドメイン」に登録し、
-**お名前.com の DNS に CNAME（`wordpress` → `wordpress-noanavi-com.pages.dev`）を足す。**
-noanavi.com のネームサーバーは Cloudflare に移していない（Workers の独自ドメインは移さないと使えないため Pages にした）。
+**`wrangler.jsonc` を消さないこと。**無いと Workers Builds が `astro add cloudflare` を自動で実行し、
+アダプターが `astro.config.mjs` の `redirects` を `_redirects` に書き足して
+`Duplicate rule for path`（code 100324）で deploy が失敗する（実際に 2 回失敗した）。
 
-`_redirects`（301）と `404.html` は Pages でそのまま効く。
-`wrangler.jsonc` は置かない（置くと Pages の設定がファイル側に移り、ダッシュボードの環境変数と食い違う）。
+`_redirects`（301）と `404.html` は Workers の静的アセットでそのまま効く。
+
+仮 URL は `https://wordpress-nonaavi-com.exabcdc.workers.dev/`。
+独自ドメイン `wordpress.noanavi.com` を Workers で使うには、noanavi.com の DNS 管理を Cloudflare に移す必要がある
+（お名前.com に CNAME を足すだけで使えるのは Pages）。
 
 手元から直接上げるとき（GitHub を経由しない緊急用）:
 
 ```sh
 pnpm exec wrangler login   # 初回だけ
-pnpm deploy                # build → check:site → wrangler pages deploy
+pnpm deploy                # build → check:site → wrangler deploy
 ```
 
 **この Mac（macOS 12.6）では Cloudflare の実行環境 workerd が動かない**（13.5 以上が必要）。
