@@ -3,6 +3,7 @@
 WordPress の不具合を症状から切り分ける記事サイト。Astro で静的 HTML を書き出し、`dist/` だけを配信する。
 
 記事の元は検証ラボ `../wp.noanavi.com/docs/`。設計は [docs/site-design.md](docs/site-design.md)。
+**やり残し（公開を見送った記事・撮影が必要な画面）は [docs/todo.md](docs/todo.md)。**
 
 ## コマンド
 
