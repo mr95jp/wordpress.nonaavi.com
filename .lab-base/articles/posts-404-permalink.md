@@ -48,6 +48,10 @@ Not Found
 実測では **Apache 自身の 404 ページ**が返っていました。WordPress のテーマの
 404 ページではありません。
 
+![Not Found The requested URL was not found on this server.](../screenshots/e/posts-404-apache.jpg)
+
+*.htaccess が無い状態で投稿を開いた画面。デザインが無く、最下行にサーバーの名前が出る*
+
 | 見えた 404 | 意味 |
 |---|---|
 | **サーバーの 404**（`Apache/2.4.x Server at ...` などが出る） | WordPress まで到達していない。`.htaccess` かサーバー設定の問題 |

@@ -31,6 +31,10 @@ XML としてパースを試すと失敗します。
 パース失敗: junk after document element: line 3, column 0
 ```
 
+同じ状態で `/feed/` をブラウザで開くと、先頭に Warning が出ています。
+
+![Warning: Cannot modify header information - headers already sent by](../screenshots/c/feed-headers-already-sent.jpg)
+
 **サイト表示は無事です。**HTML パーサーは先頭の空白や余計な出力を無視するので、
 ブラウザで見る限り何も起きていません。
 

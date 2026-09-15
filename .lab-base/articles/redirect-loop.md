@@ -50,6 +50,10 @@ AH00124 の件数: 0
 `Location` が**自分自身**を指しています。ブラウザは 301 を追いかけ続け、
 上限に達して `ERR_TOO_MANY_REDIRECTS` を表示します。
 
+![このページは動作していません。リダイレクトが繰り返し行われました。ERR_TOO_MANY_REDIRECTS](../screenshots/e/redirect-loop-too-many-redirects.jpg)
+
+*同じ状態を Chrome で開いた画面。サーバーのエラーログにはこのとき何も出ていない*
+
 なお nginx 側は `.htaccess` を読まないため **200 のまま正常**でした。
 **2 台構成やステージングで「片方だけループする」**のはこの非対称性です。
 

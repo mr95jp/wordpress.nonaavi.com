@@ -31,11 +31,16 @@
 ## 2. 2026-09-16 の公開で気づいた点
 
 - [ ] `mobile-layout-broken` からほかの記事へのリンクが 1 本だけ（`css-js-not-loading`）。本文に自然に置ける箇所が無かった
-- [ ] `login-impossible` / `wp-mail-not-delivered` の本文の文言が実際の画面（WordPress 7.1）と少し違う。本文「メール送信が正しく設定されていない可能性があります。」→ 画面「**サイトの**メール送信が正しく設定されていない可能性があります。」
-- [ ] `scheduled-post-missed` の本文の「予約投稿に失敗しました」は、投稿一覧の実際の表示では「予約投稿の失敗」
-- [ ] `site-health-reading` の本文は critical 2 件だが、撮影時は「バックグラウンド更新」を含む 3 件だった（画像の説明文に注記した）
-- [ ] `login-impossible` パターン 4 に `c/functions-parse-error.jpg` は入れていない。display_errors が有効な画面で、パターン 4 の「500」とは見え方が違うため
-- [ ] 今回撮った画像のうち、原因カテゴリが無い症状別記事の分は `docs/screenshots/s/` に置いた（ラボ側 `docs/error-catalog.md` のカテゴリ説明には未記載）
+- [x] 本文の文言を実際の画面（WordPress 7.1）に合わせた（`login-impossible` / `wp-mail-not-delivered` / `scheduled-post-missed`）。ラボで直して sync で反映
+- `site-health-reading` の本文の critical 2 件は CLI での実測値なので変えていない。撮影時は 3 件だったことを画像の説明文に注記した
+- `login-impossible` パターン 4 に `c/functions-parse-error.jpg` は入れていない。display_errors が有効な画面で、パターン 4 の「500」とは見え方が違うため
+- [x] 症状別記事の画像を `docs/screenshots/s/` に置くことを、ラボの `docs/error-catalog.md` に追記した
+
+### 本文と画像の直し方（2026-09-16 に決めた運用）
+
+- **本文・実測値・画面の文言・画像の挿入はラボで直す。**ラボでコミットしてから `pnpm sync:articles` で取り込む（3 方向マージ）
+- **サイト側で直すのは公開用の手入れだけ**（結論ボックス、内部リンク、タイトル・メタ情報、`example.com` への置き換え、`status`）
+- サイト側だけで本文や画像を直すと、次にラボを直したとき同じ行で競合しやすくなる
 
 ---
 

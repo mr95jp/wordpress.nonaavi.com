@@ -92,6 +92,10 @@ Reason: アップロードしたファイルをwp-content/uploads/2026/09に移�
 Error: No items imported.
 ```
 
+管理画面の「メディアを追加」からアップロードしたときの画面です。
+
+![アップロードしたファイルをwp-content/uploads/2026/09に移動できませんでした。](../screenshots/s/media-upload-move-failed.jpg)
+
 **エラーメッセージにディレクトリのパスが入っています。**
 これが出ているなら、見るのはそのパスです。
 
