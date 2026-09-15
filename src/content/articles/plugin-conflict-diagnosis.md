@@ -6,12 +6,18 @@ description: "プラグインを更新したら真っ白・不具合が出た時
 keywords: "WordPress プラグイン 競合, プラグイン 更新 真っ白, 更新したら 壊れた, プラグイン 不具合 切り分け, Cannot redeclare"
 category: 障害報告
 tags: [wordpress, プラグイン, 競合, wp-cli, jquery, デバッグ]
-status: draft
+summary: |
+  ・プラグインを更新したら真っ白 → まず debug.log を見る。Cannot redeclare なら、競合している 2 つのファイルが名指しされる
+  ・管理画面に入れない → FTP でプラグインのフォルダ名を変えて止め、管理画面に一度入る
+  ・エラーは出ないのに表示や動きがおかしい → 黙って壊れる競合（meta の重複、jQuery の二重読み込み、フックの後勝ち）。全部止めて 1 つずつ戻す
+  「有効化したら壊れた」はほぼ起きません。WordPress が有効化の前に検査して止めるので、落ちるのは更新のときです。
+status: published
+published: 2026-09-15
 verified: 2026-09-12
 ---
 
 プラグインを更新したらサイトが真っ白になった。1 つずつ止めれば原因は分かる、
-とよく書かれていますが、**そもそも競合には「落ちる competing」と「黙って壊れる」の
+とよく書かれていますが、**そもそも競合には「落ちる」と「黙って壊れる」の
 2 種類があり**、後者は 1 つずつ止めても気づけません。
 
 Web 上で実際に報告されている競合の型を調べ、代表的な機構をローカル環境で
@@ -125,7 +131,8 @@ in /var/www/html/wp-content/plugins/lab-conflict-beta/lab-conflict-beta.php on l
 | ON | **200** | 272 bytes（Fatal のメッセージだけ） |
 | OFF | **500** | 「このサイトで重大なエラーが発生しました。」 |
 
-`display_errors` が有効だと、サイトが完全に死んでいるのに **200 が返ります**。
+`display_errors` が有効だと、サイトが完全に死んでいるのに **200 が返ります**
+（[監視が 200 を受け取ってしまう仕組み](http-200-when-site-is-down.md)）。
 Fatal のメッセージが本文として先に出力されて、その時点でヘッダが確定するためです。
 
 また、この Fatal では **リカバリーモードによるプラグインの自動停止は
@@ -192,6 +199,9 @@ HTTP 200 は判定に使えません。
 - meta タグの数を数える: `curl -s <URL> | grep -c 'name="description"'`
 - 読み込まれた jQuery の数を数える
 - ブラウザのコンソールを見る（`$ is not a function` など）
+
+CSS や JS がそもそも読み込めていない（404 や 403）場合は、競合ではありません。
+→ [CSS が効かない・JS が動かない](css-js-not-loading.md)
 
 ### 4. 本番でやるなら Health Check & Troubleshooting
 

@@ -12,7 +12,8 @@ summary: |
   ・REST API は処理の前にヘッダを送るので、Fatal error でも 200（admin-ajax は 500）
   ・監視には「本文の長さ」と「正常時に必ず含まれる文字列」の確認を足す
   本番で display_errors を切ると、障害が 500 として正しく通知されます。
-status: draft
+status: published
+published: 2026-09-15
 verified: 2026-09-12
 ---
 

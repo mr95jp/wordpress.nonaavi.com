@@ -11,7 +11,8 @@ summary: |
   ・戻せないなら、原因のプラグインを FTP でフォルダ名を変えて止める
   ・原因の特定は wp-config.php で WP_DEBUG_LOG を有効にし、debug.log を見る
   真っ白になるのは display_errors が Off で、WordPress のエラーハンドラも無効な組み合わせだけです。エラーは起きていて、表示されていないだけです。
-status: draft
+status: published
+published: 2026-09-15
 verified: 2026-09-12
 ---
 
@@ -82,8 +83,8 @@ WordPress のエラーハンドラが 500 を設定しようとしても書き�
 
 「白画面（何も見えない）」と「監視で気づける」は両立します。むしろ、
 **画面にエラーを出す設定のほうが監視は無力になります。**
-これは REST API の Fatal error が 200 で返るのと、データベース接続エラーが
-200 で返るのと、まったく同じ機構です。
+これは [REST API の Fatal error が 200 で返る](http-200-when-site-is-down.md)のと、
+[データベース接続エラーが 200 で返る](db-connection-error-diagnosis.md)のと、まったく同じ機構です。
 
 ## バージョンを上げると何が増えるのか
 

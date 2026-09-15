@@ -13,7 +13,8 @@ summary: |
   ・別のドメインを向いている → サイト URL の設定。wp-config.php の定数が DB より優先される
   ・200 なのに出ない → 混在コンテンツ（https のページに http の画像）
   メディアライブラリに並んでいても、ファイルが存在するとは限りません。
-status: draft
+status: published
+published: 2026-09-15
 verified: 2026-09-12
 ---
 
