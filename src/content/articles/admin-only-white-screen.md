@@ -6,7 +6,15 @@ description: "サイトは表示されるのに管理画面（wp-admin）だけ�
 keywords: "WordPress 管理画面 真っ白, wp-admin 真っ白, 管理画面だけ 白い, ダッシュボード 真っ白, 管理画面 重大なエラー"
 category: 障害報告
 tags: [wordpress, 管理画面, fatal-error, 切り分け]
-status: draft
+summary: |
+  フロントが表示されているなら、原因は管理画面でだけ動くコードの Fatal error です。
+  ・どの管理画面で落ちるかをメモする（全部なら admin_init など、特定の画面ならその画面のコード）
+  ・wp-config.php で WP_DEBUG_LOG を有効にし、debug.log に出るファイル名と行番号を見る
+  ・リカバリーモードのメールは 1 日 1 通の制限があるので待たない
+  ・止めるときは FTP で原因のプラグインのフォルダをリネームする
+  ログアウトした状態では再現しないため、外部の監視では気づけません。
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -60,6 +68,7 @@ WordPress のプラグインやテーマは、管理画面とフロントで実�
 **逆に、フロントも落ちているなら `functions.php` の構文エラーや
 プラグイン同士の衝突**（読み込み時点で落ちるもの）を疑います。
 切り分けの向きが違います。
+→ [サイト全体が 500 になっている場合](functions-php-broken-recovery.md)
 
 ## 「特定の画面だけ」ならさらに絞れる
 

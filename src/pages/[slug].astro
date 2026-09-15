@@ -16,6 +16,10 @@ const { Content, headings } = await render(entry);
 const hub = hubOf(entry.id);
 if (!hub) throw new Error(`${entry.id} がどのハブにも属していません（src/lib/hubs.ts）`);
 
+// 結論ボックスは改行を <br> にするため set:html で出す。本文の ?> や < が HTML として解釈されないよう先に逃がす
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
 const toc = headings.filter((h) => h.depth === 2 && !h.text.startsWith('再現手順'));
 
 const bySlug = new Map(articles.map((a) => [a.id, a]));
@@ -75,7 +79,7 @@ const jsonLd = [
       data.summary && (
         <aside class="summary">
           <p class="summary-label">この記事の結論</p>
-          <p set:html={data.summary.trim().replace(/\n/g, '<br>')} />
+          <p set:html={escapeHtml(data.summary.trim()).replace(/\n/g, '<br>')} />
         </aside>
       )
     }

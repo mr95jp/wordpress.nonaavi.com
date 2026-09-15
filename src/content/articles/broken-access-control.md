@@ -6,7 +6,15 @@ description: "2026年に最多のプラグイン脆弱性・権限チェック�
 keywords: "WordPress 脆弱性, Broken Access Control, permission_callback, current_user_can, is_admin 権限, プラグイン 脆弱性, 権限チェック"
 category: 技術メモ
 tags: [wordpress, セキュリティ, 脆弱性, rest-api, 権限, プラグイン開発]
-status: draft
+summary: |
+  WordPress は、プラグインが登録したエンドポイントの権限を自動では確認しません。実測で書き換えられたのは次の 3 つです。
+  ・REST の permission_callback が __return_true → 未ログインで書き込めた
+  ・admin-ajax の nopriv フック → 未ログインで書き込めた
+  ・is_admin() だけで判定 → 購読者でも true になり、書き込めた
+  ・権限は current_user_can() で確認し、nonce はそれとは別に確認する
+  利用者側では直せないので、プラグインを更新し、使っていないものは削除します。
+status: published
+published: 2026-09-16
 verified: 2026-09-13
 ---
 
@@ -148,6 +156,7 @@ GET /wp-admin/admin-post.php?action=lab_bad_isadmin&value=SUBSCRIBER-4
 
 **購読者が管理操作を実行できました。** 購読者は本来 `manage_options` を
 持ちません。
+ユーザーがどの権限を持っているかの調べ方は → [「権限がありません」から原因の権限を特定する](wp-admin-403-capability.md)
 
 ### 修正
 
@@ -240,6 +249,9 @@ current_user_can( 'edit_post', $post_id )   // その投稿の編集(所有者�
 
 脆弱性情報は Patchstack や WPScan のデータベースで公開されています。
 **使っているプラグインが載っていないか**を定期的に確認します。
+
+プラグインの脆弱性とは別に、既定の WordPress が外に見せている情報は
+→ [攻撃者から何が見えているか](attack-surface-audit.md)
 
 ## 再現手順
 

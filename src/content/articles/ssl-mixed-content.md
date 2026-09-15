@@ -6,7 +6,15 @@ description: "SSL化（https化）したら画像やCSSが読み込めない・�
 keywords: "WordPress SSL化 崩れる, https 画像 表示されない, 混在コンテンツ, mixed content, SSL化 CSS 効かない, http https 置換, 鍵マーク 警告"
 category: 障害報告
 tags: [wordpress, ssl, https, 混在コンテンツ, search-replace, 移行]
-status: draft
+summary: |
+  ページは https なのに、中で読んでいる CSS や画像が http のままになっています。
+  ・データベースの http は WP-CLI の search-replace で置換する。SQL の REPLACE() は直列化データを壊す
+  ・置換では guid を除外する（変えると RSS で全記事が新着として再配信される）
+  ・置換しても URL が変わらない → wp-config.php の WP_HOME と WP_SITEURL を直す
+  ・置換しても表示が直らない → キャッシュを全消去する
+  ・http から https へのリダイレクトは最後に設定する（先にやるとループする）
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -140,6 +148,7 @@ if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X
 
 **JS と CSS が最も影響が大きい**ので、「SSL 化したら崩れた」は
 まずこの 2 つを確認します。
+→ [CSS が効かない・JavaScript が動かない](css-js-not-loading.md)
 
 コンソールに出るメッセージはこの形です。
 

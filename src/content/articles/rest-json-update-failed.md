@@ -6,13 +6,24 @@ description: "投稿保存時の「更新に失敗しました。返答が正し
 keywords: "更新に失敗しました, 正しいJSONレスポンスではありません, WordPress 保存できない JSON, ブロックエディター 更新できない, REST API エラー"
 category: 障害報告
 tags: [wordpress, ブロックエディタ, rest-api, json, htaccess]
-status: draft
+summary: |
+  エディターが REST API を呼んだのに、JSON ではないものが返ってきたという意味です。
+  ・403 の HTML が返る → .htaccess やセキュリティプラグインで wp-json が塞がれている。WordPress のブロックより後ろの規則は効かないので、前半を探す
+  ・200 なのに中身が Fatal error の HTML → REST の処理中にプラグインが Fatal を起こしている
+  ・エディターを長時間開いたままだった → nonce の期限切れ。再読み込みで直ります
+  ・原因を直すまではクラシックエディターに切り替えれば保存できる
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
 記事を保存しようとしたら、このメッセージが出た。
 
 > 更新に失敗しました。返答が正しい JSON レスポンスではありません。
+
+![更新に失敗しました。返答が正しい JSON レスポンスではありません。](../screenshots/e/rest-json-update-failed.jpg)
+
+*.htaccess で wp-json を塞いだ状態で、ブロックエディターから保存した画面*
 
 ブロックエディタが REST API を呼んだのに、**JSON ではないものが返ってきた**
 という意味です。何が返っているのかを実際に見れば原因は分かります。

@@ -6,7 +6,15 @@ description: "WordPressで画像をアップロードできない・「HTTPエ�
 keywords: "WordPress 画像 アップロードできない, HTTPエラー 画像, メディア アップロードできない, 画像 追加できない, upload_max_filesize, post_max_size"
 category: 障害報告
 tags: [wordpress, メディア, アップロード, php, パーミッション]
-status: draft
+summary: |
+  画面に出るメッセージで原因が分かれます。
+  ・「アップロードしたファイルを wp-content/uploads/… に移動できませんでした」→ そのフォルダの書き込み権限。uploads ではなく年月のフォルダを見る
+  ・「許可されている容量を超えています」→ upload_max_filesize
+  ・「HTTP エラー」だけ、または無反応 → post_max_size の超過（記録は PHP のエラーログだけ）、REST API の遮断、メモリ不足
+  ・上限を上げるときは upload_max_filesize と post_max_size の両方を上げる
+  先月まで使えたのに急にできなくなったなら、新しい月のフォルダを作れていません。
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -53,6 +61,7 @@ PHP Warning:  POST Content-Length of 3072310 bytes exceeds the limit of 2097152 
 
 これも `wp-content/debug.log` ではなく**サーバーの PHP エラーログ**です
 （WordPress の起動前に出るため）。
+→ [PHP のエラーログの場所](where-are-the-logs.md)
 
 ### 実質の上限は小さいほう
 
@@ -91,6 +100,10 @@ post_max_size = 68M
 Reason: アップロードしたファイルをwp-content/uploads/2026/09に移動できませんでした。
 Error: No items imported.
 ```
+
+管理画面の「メディアを追加」からアップロードしたときの画面です。
+
+![アップロードしたファイルをwp-content/uploads/2026/09に移動できませんでした。](../screenshots/s/media-upload-move-failed.jpg)
 
 **エラーメッセージにディレクトリのパスが入っています。**
 これが出ているなら、見るのはそのパスです。

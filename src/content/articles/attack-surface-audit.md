@@ -6,7 +6,15 @@ description: "既定のWordPressが攻撃者に何を見せているかを実測
 keywords: "WordPress セキュリティ 対策, ユーザー名 漏洩, ユーザー列挙, xmlrpc 対策, WordPress 脆弱性 確認, ブルートフォース 対策"
 category: 技術メモ
 tags: [wordpress, セキュリティ, 脆弱性, ユーザー列挙, xmlrpc, rest-api]
-status: draft
+summary: |
+  インストールしたままの WordPress は、ログインしなくても次のことを外に見せています。
+  ・ユーザー名 → REST API のユーザー一覧、?author=1 のリダイレクト先、ログインエラーの文言、XML-RPC
+  ・バージョン → meta generator、アセットの ?ver=、readme.html
+  ・ログイン試行の回数制限は無い
+  ・?author=N は template_redirect では塞げない。XML-RPC は xmlrpc_enabled では system.multicall が残るので、サーバー側で拒否する
+  隠すことより、更新・強いパスワード・ログイン試行の制限が先です。
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -269,7 +277,7 @@ add_filter( 'script_loader_src', fn( $src ) => remove_query_arg( 'ver', $src ) )
 
 | 優先 | 対策 | 理由 |
 |---|---|---|
-| **1** | **本体・プラグイン・テーマを更新する** | 実際に侵入されるのは既知の脆弱性経由。隠しても古ければ破られる |
+| **1** | **本体・プラグイン・テーマを更新する** | 実際に侵入されるのは既知の脆弱性経由。隠しても古ければ破られる（→ [プラグインに多い脆弱性の型](broken-access-control.md)） |
 | **2** | **強いパスワードと二要素認証** | ユーザー名が漏れても、パスワードが破れなければ入られない |
 | **3** | **ログイン試行の制限** | 既定では無制限。総当たりを実際に止める |
 | **4** | 使っていないプラグイン・テーマを削除する | 停止中でもファイルは残り、脆弱性の対象になる |

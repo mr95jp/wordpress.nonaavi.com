@@ -82,7 +82,8 @@ for (const file of articles) {
     continue;
   }
   const html = readFileSync(htmlPath, 'utf8');
-  const noindex = html.includes('name="robots" content="noindex"');
+  // 本文のコード例（&#x3C;meta name="robots" ...）に反応しないよう、タグの先頭から照合する
+  const noindex = html.includes('<meta name="robots" content="noindex"');
   const inSitemap = sitemap.includes(`/${slug}/<`);
 
   if (status === 'draft') {

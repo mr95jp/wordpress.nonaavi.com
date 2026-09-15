@@ -6,7 +6,14 @@ description: "functions.phpを編集したらサイトが真っ白・500にな�
 keywords: "functions.php 編集 エラー, functions.php 真っ白, functions.php 500, テーマ編集 管理画面 入れない, headers already sent, wp-login.php 500"
 category: 障害報告
 tags: [wordpress, テーマ, functions-php, wp-cli, headers-already-sent]
-status: draft
+summary: |
+  壊し方で症状が 2 つに分かれます。
+  ・ログイン画面まで 500 → 構文エラー。debug.log の Parse error に行番号が出る
+  ・サイトは表示されるのにログインできない → ?> の後ろの空白。debug.log の output started at の後ろが原因の場所
+  ・管理画面に入れないときは FTP でテーマのフォルダをリネームする。WP-CLI なら --skip-themes を付けて別テーマに切り替える
+  ・リカバリーモードのメールは 1 日 1 通の制限があるので待たない
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -106,6 +113,7 @@ Success: Switched to 'Twenty Twenty-Five' theme.
 Cookie を置くので、これが失敗すると「Cookie が原因でログインできません」
 という趣旨のエラーになります。**ユーザーからは「ログインできない」としか
 見えません。**
+→ [ログインできない時の症状別の見分け方](login-impossible.md)
 
 原因は `debug.log` に正確に出ます。
 
@@ -167,6 +175,7 @@ phpMyAdmin があれば `template` / `stylesheet` の 2 行更新が最速です
 
 1. **サイトが 500 か 200 かを見る**
    - 500 → 構文エラー。`debug.log` に行番号が出る
+   - サイトは 200 で管理画面だけ落ちる → [管理画面だけ真っ白](admin-only-white-screen.md)
    - 200 なのに「ログインできない」「リダイレクトされない」→ `headers already sent`
 2. `debug.log` を見る。構文エラーなら `Parse error`、空白なら
    `Cannot modify header information ... output started at`

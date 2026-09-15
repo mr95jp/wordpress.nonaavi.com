@@ -6,7 +6,13 @@ description: "WordPressの管理画面に入れない・WP-CLIが無いレンタ
 keywords: "WordPress 管理画面 入れない 復旧, プラグイン 停止 FTP, phpMyAdmin テーマ 戻す, WP-CLI 無い, レンタルサーバー 復旧, active_plugins"
 category: 障害報告
 tags: [wordpress, 復旧, ftp, phpmyadmin, レンタルサーバー]
-status: draft
+summary: |
+  ・プラグインが原因 → そのプラグインのフォルダだけ FTP でリネームし、管理画面に一度ログインする。これで無効化が確定し、名前を戻しても無効のまま
+  ・plugins フォルダごとのリネームは切り分け用。DB は変わらないので、名前を戻すと即再発する
+  ・テーマが原因 → phpMyAdmin で template と stylesheet の 2 行を既定テーマ名にすると、ログイン不要で即反映
+  ・phpMyAdmin で siteurl を直しても効かない → wp-config.php の WP_HOME と WP_SITEURL を直す
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -81,6 +87,7 @@ WordPress は管理画面の読み込み時に、有効なプラグインのフ�
 
 テーマの `functions.php` を壊して 500 にした状態から、テーマのフォルダを
 リネームしました。プラグインとは挙動が違います。
+（壊れ方ごとの症状は [functions.php を壊したときの復旧](functions-php-broken-recovery.md)）
 
 | | 結果 |
 |---|---|

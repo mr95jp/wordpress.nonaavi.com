@@ -6,7 +6,14 @@ description: "PHPを7から8に上げたらサイトが動かない・エラー�
 keywords: "PHP8 エラー, PHP8 動かない, PHP アップデート 白い, PHP7 PHP8 移行, create_function 削除, PHP8 Fatal error, PHP バージョン 上げたら"
 category: 技術メモ
 tags: [wordpress, php, php8, 移行, 非推奨, デバッグ]
-status: draft
+summary: |
+  PHP 7.4 と 8.2 で同じコードを動かすと、壊れ方は 2 種類でした。
+  ・Fatal になる → create_function、非静的メソッドの静的呼び出し、波括弧の文字列オフセット。3 つとも 7.4 の debug.log に Deprecated として出ていた
+  ・エラーなしで結果が変わる → 0 == 'wp' が true から false に反転する。debug.log には出ない
+  ・上げる前に、7.4 のまま debug.log の Deprecated を読んで直す
+  ・決済・在庫・権限に関わる == は === に直し、上げた直後は数字が出る画面を人が確認する
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 

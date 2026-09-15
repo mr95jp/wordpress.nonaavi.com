@@ -6,7 +6,13 @@ description: "サーバー移行後に絵文字が保存できない・投稿時
 keywords: "WordPress 絵文字 消える, 絵文字 保存できない, 文字化け 移行, 投稿時間 ずれる, 予約投稿 時間 ずれる, utf8mb4, タイムゾーン 9時間"
 category: 障害報告
 tags: [wordpress, mysql, utf8mb4, 絵文字, タイムゾーン, 移行]
-status: draft
+summary: |
+  どちらも原因はデータベースと PHP の設定で、プラグインを止めても直りません。
+  ・絵文字以降が消える・保存できない → テーブルが utf8（3 バイトまで）。日本語は通るので気づきにくい。バックアップを取ってから utf8mb4 に変換する
+  ・時刻が 9 時間ずれる → PHP の date.timezone と WordPress のタイムゾーンが違う。設定 > 一般で「東京」を選び、php.ini も Asia/Tokyo に揃える
+  ・自作のコードでは date() ではなく current_time() か wp_date() を使う
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -120,6 +126,9 @@ wp db query "ALTER TABLE wp_posts CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8m
 この 2 つが一致していない環境では、**どちらの関数で書かれているかによって
 時刻が変わります。**
 
+コマンドラインと Web で PHP の設定値が違うことは、サイトヘルスの判定もずらします。
+→ [サイトヘルスの「重大な問題」の読み方](site-health-reading.md)
+
 ### 実際に踏んだ例
 
 この検証中、予約投稿を作ろうとして失敗しました。
@@ -134,6 +143,8 @@ wp post create --post_status=future --post_date="$(date -d '+60 seconds')"
 
 **移行スクリプトやインポートツールが同じ間違いをすると、
 予約投稿が全部公開されるか、全部 9 時間ずれます。**
+時刻は合っているのに公開されない場合は、別の原因です。
+→ [予約投稿されない](scheduled-post-missed.md)
 
 ### 確認方法
 

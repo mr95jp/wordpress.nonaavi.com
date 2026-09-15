@@ -6,7 +6,14 @@ description: "トップページは表示されるのに投稿・固定ページ
 keywords: "WordPress 記事 404, 投稿 404, 個別ページ 404, パーマリンク 404, 記事だけ 表示されない, パーマリンク 保存し直す"
 category: 障害報告
 tags: [wordpress, 404, パーマリンク, htaccess, apache, nginx]
-status: draft
+summary: |
+  トップは表示されるのに投稿だけ 404 なら、まず 404 の見た目を確認します。
+  ・Not Found とサーバー名だけの画面 → WordPress まで届いていない。.htaccess が無いか壊れている
+  ・テーマのデザインの 404 → .htaccess は無罪。投稿の公開状態やパーマリンク構造を見る
+  ・設定 > パーマリンクで保存し直すと、.htaccess が書き直される
+  ・「手動で書き換える必要があります」と出たら書き込み権限が無い。表示されたコードを FTP で .htaccess に貼る
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -47,6 +54,10 @@ Not Found
 
 実測では **Apache 自身の 404 ページ**が返っていました。WordPress のテーマの
 404 ページではありません。
+
+![Not Found The requested URL was not found on this server.](../screenshots/e/posts-404-apache.jpg)
+
+*.htaccess が無い状態で投稿を開いた画面。デザインが無く、最下行にサーバーの名前が出る*
 
 | 見えた 404 | 意味 |
 |---|---|
@@ -138,11 +149,12 @@ location = /robots.txt { try_files $uri /index.php?$args; access_log off; log_no
 
 **「WordPress が生成するはずのファイルが 404」**という症状は、
 `robots.txt` だけでなく `wp-sitemap.xml` などでも同じ原因で起きます。
+→ [RSS とサイトマップだけ壊れる](feed-sitemap-broken.md)
 
 ## 切り分けの順番
 
 1. **404 の見た目を確認する** — サーバーの 404 か、テーマの 404 か
-2. サーバーの 404 なら `.htaccess` の有無と中身を見る
+2. サーバーの 404 なら `.htaccess` の有無と中身を見る（404 ではなく 500 なら → [.htaccess で 500 エラー](htaccess-500-rewrite-loop.md)）
 3. パーマリンク設定を保存し直す（= `.htaccess` の再生成）
 4. **「手動で書き換える必要があります」が出たら、権限の問題**。貼り付け用コードを FTP で書き込む
 5. テーマの 404 なら `.htaccess` は無罪。投稿の公開状態やパーマリンク構造を見る

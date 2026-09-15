@@ -6,7 +6,14 @@ description: "「リダイレクトが多すぎます」（ERR_TOO_MANY_REDIRECT
 keywords: "リダイレクトが多すぎます, ERR_TOO_MANY_REDIRECTS, WordPress リダイレクト ループ, ログイン 戻される 繰り返し, リダイレクトを繰り返しました"
 category: 障害報告
 tags: [wordpress, リダイレクト, ssl, htaccess, siteurl]
-status: draft
+summary: |
+  ループは 2 種類あり、ログの出方で見分けられます。
+  ・ブラウザに「リダイレクトが繰り返し行われました」と出てエラーログが空 → 外部リダイレクトのループ。SSL 強制の条件ミスか、SSL 強制プラグインの重複
+  ・500 でエラーログに AH00124 → 内部リライトのループ。RewriteBase の誤りなど
+  ・エラーは出ないのにログイン画面に戻され続ける → WP_HOME と WP_SITEURL のホストが違い、Cookie が別ホストに置かれている
+  ・管理画面に入れないときは、.htaccess と SSL 強制プラグインのフォルダを FTP でリネームする
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -49,6 +56,10 @@ AH00124 の件数: 0
 
 `Location` が**自分自身**を指しています。ブラウザは 301 を追いかけ続け、
 上限に達して `ERR_TOO_MANY_REDIRECTS` を表示します。
+
+![このページは動作していません。リダイレクトが繰り返し行われました。ERR_TOO_MANY_REDIRECTS](../screenshots/e/redirect-loop-too-many-redirects.jpg)
+
+*同じ状態を Chrome で開いた画面。サーバーのエラーログにはこのとき何も出ていない*
 
 なお nginx 側は `.htaccess` を読まないため **200 のまま正常**でした。
 **2 台構成やステージングで「片方だけループする」**のはこの非対称性です。
@@ -142,6 +153,7 @@ WordPress が発行するログイン Cookie には `Domain` 属性が付きま�
 
 **HTTP レベルの無限ループではないので `ERR_TOO_MANY_REDIRECTS` は出ません。**
 利用者から見ると「ログインできない」という報告になります。
+→ [ログインできない時の症状別の見分け方](login-impossible.md)
 
 同じことが `www` 有り無し、`http` / `https`、独自ドメインと
 サーバー既定ドメインの混在でも起きます。**ホストが 1 文字でも違えば別扱い**です。

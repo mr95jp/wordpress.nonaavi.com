@@ -6,7 +6,15 @@ description: "WordPressの管理画面だけレイアウトが崩れる・CSSが
 keywords: "WordPress 管理画面 崩れる, 管理画面 レイアウト崩れ, 管理画面 CSS 効かない, ダッシュボード 崩れる, load-styles.php"
 category: 障害報告
 tags: [wordpress, 管理画面, css, load-styles, キャッシュ]
-status: draft
+summary: |
+  管理画面の CSS と JS は load-styles.php と load-scripts.php にまとめて配信されています。この 2 つが通るかだけを見ます。
+  ・403 → サーバー設定、セキュリティプラグイン、WAF
+  ・404 → コアファイルの欠損。コアを再インストールする
+  ・200 → キャッシュ・最適化プラグインが管理画面まで対象にしていないか、特定プラグインの CSS を疑う
+  ・wp-config.php で CONCATENATE_SCRIPTS を false にして直るなら、原因は結合の仕組み
+  ログインしていなくても URL を開けば確認できます。
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 

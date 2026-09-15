@@ -6,7 +6,14 @@ description: "知らない管理者がいる・スパムリンクが埋め込ま
 keywords: "WordPress 乗っ取り, WordPress 改ざん, 知らない管理者, スパムリンク 埋め込み, マルウェア 除去, ハッキング 復旧, 不正ログイン"
 category: 障害報告
 tags: [wordpress, セキュリティ, 改ざん, 侵害, データベース]
-status: draft
+summary: |
+  ファイルの改ざんチェックが全部 Success でも、データベースに入った痕跡は残ります。
+  ・知らない管理者 → 管理者を登録日の新しい順に並べて確認する。admin_email の書き換えも見る
+  ・本文やオプションへの注入 → script、iframe、base64_decode を検索する。transient を含むオプションは偽陽性
+  ・SQL で直接書き換えられると更新日は変わらないので、更新日では探せない
+  ・侵害を確認したら wp-config.php の認証キー 8 つを再生成する。パスワードを変えるだけでは、盗まれた Cookie でログインされ続ける
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 

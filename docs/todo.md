@@ -1,42 +1,16 @@
 # TODO
 
-最終更新: 2026-09-15
+最終更新: 2026-09-16
 
-公開済み 7 本・下書き 31 本。公開は `article-publish` スキルの手順で行う。
+公開済み 38 本・下書き 0 本。公開は `article-publish` スキルの手順で行う。
 
 ---
 
-## 1. スクリーンショット待ちで公開を見送った 4 本
+## 1. スクリーンショット
 
-2026-09-15 の公開で見送り。**中身（結論ボックス・ラボ専用の記述・内部リンク）は公開できる状態。**
-「画面に症状が出る記事には、その画面のスクリーンショットを必ず入れる」という原則を満たしていないため止めている。
-
-| 記事 | 結論 | 撮る画面 |
-|---|---|---|
-| [ ] `login-impossible` ログインできない | 済 | 下記 |
-| [ ] `wp-mail-not-delivered` メールが届かない | 済 | 下記 |
-| [ ] `redirect-loop` リダイレクトが多すぎます | **未** | 下記 |
-| [ ] `rest-json-update-failed` 更新に失敗しました（JSON） | **未** | 下記 |
-
-### 撮る画面（ラボで撮影する）
-
-**login-impossible**
-- [ ] パスワード再設定で「エラー: メールを送信できませんでした。メール送信が正しく設定されていない可能性があります。」が出た画面（パターン 3）
-- [ ] 管理画面にアクセスして HTTPS に転送され、ブラウザが接続できない画面（パターン 2）
-- ログイン画面の 500（パターン 4）は既存の `c/functions-parse-error.jpg` が使えるか確認する
-
-**wp-mail-not-delivered**
-- [ ] 「エラー: メールを送信できませんでした。」の画面（送信できていない状態）
-- [ ] 「確認のリンクを含むメールを送信しました」の画面（正常。対比用）
-- 1 枚目は login-impossible と共用できる
-
-**redirect-loop**
-- [ ] ブラウザの「リダイレクトが繰り返し行われました」（`ERR_TOO_MANY_REDIRECTS`）の画面
-- [ ] 同じ状態で nginx 側（8080）は正常に表示されている画面（Apache だけでループする対比。任意）
-
-**rest-json-update-failed**
-- [ ] ブロックエディターで「更新に失敗しました。返答が正しい JSON レスポンスではありません。」が出た画面（原因 1: `.htaccess` で `wp-json` を遮断）
-- [ ] 遮断を外して保存できた画面（正常。対比用。任意）
+- [ ] `ssl-mixed-content` は画像なしで公開した（2026-09-16、判断済み）。ラボに HTTPS のリスナーが無く、ブラウザがブロックする画面を撮れないため。HTTPS を足したら次の 2 枚を撮って追加する
+  - https のページで CSS が http のままブロックされ、デザインが崩れた画面
+  - 開発者ツールのコンソールに `Mixed Content: … This request has been blocked.` が出ている画面
 
 ### 撮り方の注意（ラボの原則）
 
@@ -50,51 +24,18 @@
 1. ラボで `docs/screenshots/` に画像を置く
 2. このリポジトリで `pnpm sync:articles`（画像が追加される。ラボ側で記事に画像を挿入していれば、その変更もサイト側の記事にマージされる）
 3. マージされなかった記事には画像を手で挿入する: `![画面に出ている文言](../screenshots/<カテゴリ>/<ファイル名>)`
-4. `redirect-loop` と `rest-json-update-failed` は `article-summary` で結論を書く
-5. `article-publish` で公開する
+4. `article-publish` で公開する
 
 ---
 
-## 2. 残りの下書き 27 本
+## 2. 2026-09-16 の公開で気づいた点
 
-**結論ボックスはすべて未。**「スクショ」列が「要」の記事は、上と同じく撮影が済むまで公開しない。
-
-| ハブ | 記事 | 画像 | スクショ |
-|---|---|---|---|
-| error-screen | `admin-only-white-screen` | 2 | 足りている |
-| error-screen | `functions-php-broken-recovery` | 1 | 足りている |
-| error-screen | `maintenance-mode-stuck` | 1 | 足りている |
-| error-screen | `php7-to-php8-breaking-changes` | 0 | 不要（ログと比較結果が証拠） |
-| cannot-login | `siteguard-lockout` | 3 | 足りている |
-| cannot-login | `wp-admin-403-capability` | 2 | 足りている |
-| cannot-login | `recovery-without-wp-cli` | 0 | 不要（手順の記事） |
-| display-broken | `css-js-not-loading` | 1 | 足りている |
-| display-broken | `admin-styles-broken` | 1 | 足りている |
-| display-broken | `block-editor-blank` | 1 | 足りている |
-| display-broken | `mobile-layout-broken` | 0 | **要**（スマホで崩れた画面） |
-| display-broken | `ssl-mixed-content` | 0 | **要**（崩れた画面か、コンソールの Mixed Content。ただし記事中で「ブラウザのブロックは再現できていない」と明記しているので要検討） |
-| display-broken | `posts-404-permalink` | 0 | **要**（投稿だけサーバーの 404 になる画面） |
-| cannot-save | `contact-form-7-not-sending` | 0 | **要**（送信ボタンがくるくる回ったまま） |
-| cannot-save | `media-upload-failure` | 0 | **要**（メディアの「HTTP エラー」） |
-| cannot-save | `max-input-vars-silent-loss` | 0 | 不要（黙って消える。件数が証拠） |
-| cannot-save | `scheduled-post-missed` | 0 | 任意（「予約投稿の失敗」表示） |
-| cannot-save | `emoji-and-timezone` | 0 | 不要（ログと値が証拠） |
-| slow-seo | `feed-sitemap-broken` | 0 | 任意（XML のパースエラー画面） |
-| slow-seo | `not-indexed-by-google` | 0 | 不要 |
-| security | `attack-surface-audit` | 0 | 不要 |
-| security | `broken-access-control` | 1 | 足りている |
-| security | `compromised-db-side` | 0 | 不要 |
-| security | `config-file-exposure` | 0 | 不要 |
-| security | `verify-checksums-blind-spots` | 0 | 不要 |
-| diagnosis | `site-health-reading` | 0 | 任意（サイトヘルスの「重大な問題」画面） |
-| diagnosis | `where-are-the-logs` | 0 | 不要 |
-
-「要」「任意」は記事本文から判断した見込み。公開するときに `article-publish` の手順 6 で改めて確認する。
-
-### 進め方
-
-- 1 回に 5〜10 本。「足りている」「不要」の記事から結論を書いて公開する
-- 週 1 回程度のペースで出し、Search Console でインデックスの状況を見る
+- [ ] `mobile-layout-broken` からほかの記事へのリンクが 1 本だけ（`css-js-not-loading`）。本文に自然に置ける箇所が無かった
+- [ ] `login-impossible` / `wp-mail-not-delivered` の本文の文言が実際の画面（WordPress 7.1）と少し違う。本文「メール送信が正しく設定されていない可能性があります。」→ 画面「**サイトの**メール送信が正しく設定されていない可能性があります。」
+- [ ] `scheduled-post-missed` の本文の「予約投稿に失敗しました」は、投稿一覧の実際の表示では「予約投稿の失敗」
+- [ ] `site-health-reading` の本文は critical 2 件だが、撮影時は「バックグラウンド更新」を含む 3 件だった（画像の説明文に注記した）
+- [ ] `login-impossible` パターン 4 に `c/functions-parse-error.jpg` は入れていない。display_errors が有効な画面で、パターン 4 の「500」とは見え方が違うため
+- [ ] 今回撮った画像のうち、原因カテゴリが無い症状別記事の分は `docs/screenshots/s/` に置いた（ラボ側 `docs/error-catalog.md` のカテゴリ説明には未記載）
 
 ---
 

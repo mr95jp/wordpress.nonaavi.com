@@ -6,7 +6,14 @@ description: "投稿・固定ページの編集画面（ブロックエディタ
 keywords: "ブロックエディター 真っ白, Gutenberg 使えない, 投稿画面 真っ白, 編集画面 白い, ブロックエディター 読み込めない, block-editor.min.js"
 category: 障害報告
 tags: [wordpress, gutenberg, ブロックエディタ, javascript, rest-api]
-status: draft
+summary: |
+  ブロックエディターは大量の JavaScript と REST API に依存していて、どちらかが欠けると白いまま止まります。
+  ・block-editor.min.js が 403 → .htaccess などで wp-includes が丸ごと塞がれている。PHP ファイルだけを塞ぐ書き方にする
+  ・REST API が JSON を返さない → 遮断か Fatal。「返答が正しい JSON レスポンスではありません」と同じ原因
+  ・どちらも正常 → プラグインの JS エラー。コンソールの一番上のエラーに出るファイル名が原因のプラグイン
+  ・急ぐときは Classic Editor プラグインで編集できる
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 

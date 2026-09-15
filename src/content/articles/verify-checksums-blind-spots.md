@@ -6,7 +6,15 @@ description: "wp core verify-checksumsがSuccessでも改ざんは見つから�
 keywords: "WordPress 改ざん チェック, verify-checksums, wp-content 改ざん, 改ざん 検知, ファイル 改ざん 確認, WordPress 検知"
 category: 障害報告
 tags: [wordpress, セキュリティ, 改ざん, wp-cli, git]
-status: draft
+summary: |
+  wp core verify-checksums が照合するのはコアファイルだけです。
+  ・プラグインやテーマを改ざんしても Success になる
+  ・wp.org 配布のプラグインは wp plugin verify-checksums で検知できるが、自作プラグインは skipping と出て検査されない
+  ・テーマ用の検査コマンドは存在しない
+  ・コアと wp-content を均一に確認できたのは git status だけだった
+  データベースに入った改ざんは、どの方法でも見つかりません。
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -49,6 +57,7 @@ Success: WordPress installation verifies against checksums.
 **Success です。**このコマンドはコアファイルのチェックサムしか照合しません。
 実際の改ざんの大半はプラグインやテーマへの注入なので、この検査だけでは
 判断材料になりません。
+→ [プラグインに多い脆弱性の型](broken-access-control.md)
 
 プラグインには専用のコマンドがあり、そちらは検知します。
 

@@ -6,7 +6,14 @@ description: "サイトヘルスに出る「重大な問題」の意味と対処
 keywords: "WordPress サイトヘルス 重大な問題, サイトヘルス REST API エラー, ループバック 失敗, サイトヘルス 見方, 推奨されている改善"
 category: 技術メモ
 tags: [wordpress, サイトヘルス, 診断, rest-api, ループバック]
-status: draft
+summary: |
+  「重大な問題」でも、そのまま読むと誤診する項目があります。
+  ・「REST API でエラーが発生しました」「ループバックリクエスト」→ サイトが自分自身に接続できないだけのことがある。外から wp-json を開いて JSON が返れば REST は正常。ただし予約投稿と自動更新は止まっている
+  ・自動読み込みオプションのサイズが重大 → 速度とメモリに実際に効くので対応する
+  ・訪問者へのエラー表示、検索エンジンにインデックスさせない設定 → 「おすすめの改善」でも実害が大きい
+  ・停止中のプラグインの削除、PHP のバージョン → 急がなくてよい
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -55,6 +62,10 @@ $ curl -s -o /dev/null -D - http://localhost:8080/wp-json/ | grep -iE '^HTTP|^co
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
 ```
+
+![REST API でエラーが発生しました / サイトでループバックリクエストが完了できませんでした](../screenshots/s/site-health-critical.jpg)
+
+*同じ環境をブラウザで開いた画面（2026-09-16 撮影）。このときは「バックグラウンド更新が想定通りに動作していません」を含む 3 件が並んだ。バックグラウンド更新も async の検査で、ループバックが通らないと失敗する 5 つのうちの 1 つ*
 
 **「REST API でエラーが発生しました」は、REST API が壊れていることを
 意味しません。**サイト自身から自分の URL に到達できないだけです。

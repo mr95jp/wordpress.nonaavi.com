@@ -6,7 +6,14 @@ description: "WordPressでメニューやカスタムフィールドが保存で
 keywords: "WordPress 保存できない, メニュー 保存できない, 設定 保存できない, 一部 消える, max_input_vars, カスタムフィールド 保存されない, ACF 消える"
 category: 障害報告
 tags: [wordpress, php, メニュー, カスタムフィールド, max_input_vars]
-status: draft
+summary: |
+  PHP の max_input_vars を超えた入力が、警告も出さずに捨てられています。
+  ・上限 50 で 120 個送ると 51 個しか届かず、WordPress は「保存しました」と表示した
+  ・メニュー項目は 1 つで 10 個以上の入力を使うので、60〜80 項目で既定の上限 1000 に達する
+  ・警告は debug.log には出ない。サーバーの PHP エラーログに Input variables exceeded と出る
+  ・php.ini や .user.ini で max_input_vars を上げる。上げられなければメニューを分割する
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -53,6 +60,7 @@ To increase the limit change max_input_vars in php.ini. in Unknown on line 0
 
 **「debug.log を見ても何も出ていない」で調査が止まるのはこれが原因です。**
 見るのはサーバーのエラーログ（レンタルサーバーなら管理画面のエラーログ機能）です。
+→ [PHP のエラーログの場所](where-are-the-logs.md)
 
 ## 項目数と変数の数は一致しない
 
@@ -88,7 +96,8 @@ WordPress のメニュー項目は 1 つあたり
 php -i | grep max_input_vars
 ```
 
-管理画面の **ツール > サイトヘルス > 情報 > サーバー** にも表示されます。
+管理画面の **ツール > サイトヘルス > 情報 > サーバー** にも表示されます
+（→ [サイトヘルスの読み方](site-health-reading.md)）。
 
 疑わしいときは、保存する直前のフォームの入力数を数えます。
 ブラウザのコンソールで 1 行です。

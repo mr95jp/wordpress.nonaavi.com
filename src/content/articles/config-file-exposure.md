@@ -6,7 +6,14 @@ description: "wp-config.phpのパスワードが漏れるか実測。PHP停止�
 keywords: "wp-config.php 漏洩, WordPress 情報漏洩, wp-config バックアップ 漏れる, .env 漏洩, パスワード 漏洩 確認, セキュリティ 確認"
 category: 障害報告
 tags: [wordpress, セキュリティ, wp-config, 情報漏洩, htaccess]
-status: draft
+summary: |
+  ・wp-config.php 本体は、PHP を止めてもソースが出なかった（0 バイトか応答なし）
+  ・危険なのはバックアップ。wp-config.php.bak、wp-config.php~、.save、.txt、.inc は nginx でも Apache でも全文が返った
+  ・.env は Apache で全文が返った（nginx は拒否した）
+  ・退避ファイルは公開領域の外に置き、.htaccess で拡張子とドットファイルを拒否する
+  ・漏れた疑いがあれば、DB のパスワードと認証キーを作り直す
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -137,9 +144,13 @@ location = /wp-config.php { deny all; }
    → 全ユーザーのログインセッションが無効になり、Cookie の偽装ができなくなる
 3. 管理者のパスワードを変更
 4. 管理者ユーザーが増えていないか確認
+   → [乗っ取られた・改ざんされた時の確認](compromised-db-side.md)
 
 **認証キーの再生成を忘れると、パスワードだけ変えても
 盗まれた Cookie でログインされ続けます。**
+
+設定ファイル以外に外から見えている情報（ユーザー名やバージョン）の確認は
+→ [攻撃者から何が見えているか](attack-surface-audit.md)
 
 ## 自分のサイトを確認する
 

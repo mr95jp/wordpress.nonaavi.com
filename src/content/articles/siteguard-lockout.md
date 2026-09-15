@@ -6,7 +6,14 @@ description: "SiteGuard WP Pluginでログインできない時の対処法。wp
 keywords: "SiteGuard ログインできない, LOGIN LOCKED 解除, SiteGuard 404, ログインページ 変更 わからない, SiteGuard ロック 解除, wp-login.php 404"
 category: 障害報告
 tags: [wordpress, siteguard, セキュリティプラグイン, ログイン, レンタルサーバー]
-status: draft
+summary: |
+  ・wp-login.php が 404 → ログイン URL が変わっただけ。/wp-admin/ を開けば新しいログイン画面に飛べる（形は /login_数字5桁.php）
+  ・ERROR: LOGIN LOCKED → 5 秒以内に 3 回失敗したためのロック。1 分待ってから 1 回だけ試す
+  ・ロック中に試すと、その時点から 60 秒を数え直すので待ち時間が延びる
+  ・ロックは IP 単位なので、共有回線では他人の失敗でもロックされる
+  プラグインを消すとセキュリティ設定が全部外れるため、まず /wp-admin/ から入ります。
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -30,6 +37,7 @@ SiteGuard WP Plugin は国内のレンタルサーバーが標準で導入して
 WordPress の 404 ページ（21,203 bytes）で、サーバーの 404 ではありません。
 
 **サイトの表示には何の影響もありません。**気づくのは次にログインしようとしたときです。
+SiteGuard を入れていないのにログインできない場合は → [ログインできない時の症状別の見分け方](login-impossible.md)
 
 ![wp-login.php が 404 になる](../screenshots/p/siteguard-wp-login-404.jpg)
 
@@ -78,6 +86,7 @@ renamelogin_path = login_14569
 | 5. FTP | `wp-content/plugins/siteguard` をリネーム |
 
 **4 と 5 はプラグインを止めるので、セキュリティ設定が全部外れます。**
+FTP でのリネーム手順は [FTP と phpMyAdmin だけで復旧する方法](recovery-without-wp-cli.md) にあります。
 1 で入れるなら、そちらのほうが安全です。
 
 なお 3 の値は直列化されているので、SQL で見るより WP-CLI が簡単です。

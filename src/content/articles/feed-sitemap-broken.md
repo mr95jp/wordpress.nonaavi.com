@@ -6,7 +6,14 @@ description: "サイトは正常なのにRSS（/feed/）やサイトマップだ
 keywords: "WordPress RSS 表示されない, feed 壊れる, サイトマップ エラー, wp-sitemap.xml 404, サイトマップ 読み取れませんでした, RSS フィード エラー, XML パースエラー"
 category: 障害報告
 tags: [wordpress, rss, サイトマップ, xml, seo]
-status: draft
+summary: |
+  サイトの表示と RSS・サイトマップでは、壊れる条件が違います。
+  ・フィードが読めない → 先頭に空白や Warning が混ざっている。functions.php の ?> の後ろの空白 1 つで XML は壊れる（HTML は無事）
+  ・原因のファイルと行番号は debug.log の output started at の後ろに出る
+  ・サイトマップが 404 → 設定 > 表示設定の「検索エンジンがサイトをインデックスしないようにする」がオン
+  ・予防として、functions.php の末尾には ?> を書かない
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -30,6 +37,10 @@ XML としてパースを試すと失敗します。
 ```
 パース失敗: junk after document element: line 3, column 0
 ```
+
+同じ状態で `/feed/` をブラウザで開くと、先頭に Warning が出ています。
+
+![Warning: Cannot modify header information - headers already sent by](../screenshots/c/feed-headers-already-sent.jpg)
 
 **サイト表示は無事です。**HTML パーサーは先頭の空白や余計な出力を無視するので、
 ブラウザで見る限り何も起きていません。
@@ -66,6 +77,8 @@ in /var/www/html/wp-includes/pluggable.php on line ...
 - `Set-Cookie` が出なくなって**ログインできない**
 - リダイレクトが効かなくなる
 
+→ [functions.php を壊したときの復旧](functions-php-broken-recovery.md)
+
 フィードだけが壊れていて他は無事なら、出力が混ざっているのは
 **フィードの生成時だけ実行されるコード**（`is_feed()` の中など）です。
 
@@ -94,7 +107,7 @@ in /var/www/html/wp-includes/pluggable.php on line ...
 
 **開発中にチェックを入れて、公開時に外し忘れる**のが定番の経路です。
 「サイトマップが 404」「検索結果に出ない」が同時に起きていたら、
-まずここを見ます。`noindex` が出ているかは 1 行で確認できます。
+まずここを見ます（→ [検索結果に出てこない](not-indexed-by-google.md)）。`noindex` が出ているかは 1 行で確認できます。
 
 ```sh
 curl -s https://example.com/ | grep -o "<meta name='robots'[^>]*"

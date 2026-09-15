@@ -6,7 +6,14 @@ description: "Contact Form 7で送信ボタンがくるくる回ったまま止�
 keywords: "Contact Form 7 送信できない, Contact Form 7 くるくる, フォーム 送信できない, CF7 くるくる 止まらない, 問い合わせフォーム 送信できない"
 category: 障害報告
 tags: [wordpress, contact-form-7, フォーム, キャッシュ, rest-api, nonce]
-status: draft
+summary: |
+  現行版（6.1.7）は未ログインの訪問者に nonce を出していないので、「キャッシュで nonce が切れる」は原因になりません。症状で分かれます。
+  ・送信ボタンが回ったまま止まらない → REST API が塞がれていて、JSON の代わりに HTML が返っている
+  ・ページが再読み込みされて結果が出る → JS が読み込まれていないだけで、送信はできている
+  ・ボタンを押しても何も起きない → 他のプラグインの JS エラー。コンソールの一番上のエラーを見る
+  ・「送信されました」と出るのにメールが来ない → フォームではなくメール送信の問題
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -93,6 +100,10 @@ Contact Form 7 は REST API のエンドポイントに送信します。
 **JavaScript は JSON を期待しているのに HTML を受け取ります。**
 パースに失敗し、成功も失敗も表示できないため、
 **送信中の表示（ぐるぐる）が消えません。**
+
+![送信ボタンの横で回転表示が止まらない](../screenshots/s/cf7-submit-spinner.jpg)
+
+*.htaccess で wp-json を塞いだ状態で送信した画面。4 秒待っても送信中の表示のまま、結果のメッセージは出ない*
 
 これが「くるくる止まらない」のいちばん多い原因です。
 `.htaccess` を読まない nginx 側では起きないため、

@@ -6,7 +6,15 @@ description: "WordPressのログはどこにあり、どの障害がどこに記
 keywords: "WordPress ログ 場所, debug.log どこ, WordPress エラーログ 見方, error_log 場所, デバッグ ログ 出し方, WP_DEBUG"
 category: 技術メモ
 tags: [wordpress, ログ, debug-log, デバッグ, 障害対応]
-status: draft
+summary: |
+  障害は層ごとに別のログに出ます。debug.log が空でも、障害が無いとは限りません。
+  ・Fatal error、構文エラー、DB 接続エラー → wp-content/debug.log（wp-config.php で WP_DEBUG_LOG を有効にしておく）
+  ・max_input_vars や post_max_size の超過 → サーバーの PHP エラーログだけ（in Unknown on line 0 が目印）
+  ・.htaccess の誤り、内部リライトのループ → Apache のエラーログ
+  ・外部リダイレクトのループ、DB 名の誤り → どのログにも出ない
+  debug.log は Web から読めるので、公開領域の外に出すか、サーバー設定で拒否します。
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -182,6 +190,7 @@ long_query_time     = 1
 
 opcache がコンパイル結果を持っている間、構文レベルの警告は二度と出ません。
 **PHP を上げた直後に 1 回だけ出た警告は、後から調べても再現しません。**
+→ [PHP 8 に上げる前に debug.log で見ておくこと](php7-to-php8-breaking-changes.md)
 
 調査するときは opcache をリセットしてから 1 回目のログを見ます。
 

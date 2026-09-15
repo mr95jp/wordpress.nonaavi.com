@@ -6,7 +6,14 @@ description: "公開したのにGoogle検索に出てこない・インデック
 keywords: "WordPress 検索に出てこない, Google インデックスされない, 検索結果 出ない, noindex 外し方, サイトマップ 404, 検索エンジン インデックス"
 category: 技術メモ
 tags: [wordpress, seo, noindex, robots, サイトマップ, インデックス]
-status: draft
+summary: |
+  原因の大半は「検索エンジンがサイトをインデックスしないようにする」のチェックです。設定 > 表示設定で外します。
+  ・ページの HTML に noindex が出ている、サイトマップが 404 → このチェックが入っている
+  ・robots.txt は変わらない（違いは Sitemap 行だけ）ので、robots.txt を見ても判断できない
+  ・チェックを外しても noindex が消えない → SEO プラグインの設定か X-Robots-Tag ヘッダ
+  ・設定が全部正しければ、Search Console の URL 検査でインデックス登録をリクエストする
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 

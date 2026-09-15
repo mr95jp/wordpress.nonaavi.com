@@ -6,7 +6,14 @@ description: "WordPressでCSSが効かない・デザインが崩れる・JavaSc
 keywords: "WordPress CSS 効かない, デザイン 崩れる, JavaScript 動かない, スタイル 反映されない, CSS 読み込まれない, jQuery 動かない, $ is not a function"
 category: 障害報告
 tags: [wordpress, css, javascript, アセット, キャッシュ]
-status: draft
+summary: |
+  まず読み込まれているかを、ブラウザの開発者ツールの Network タブで確認します。
+  ・404 → ファイルが無いか URL の設定違い。404 でも 20KB 前後の HTML が返るので、転送量では判断しない
+  ・403 → .htaccess やセキュリティ設定で塞がれている（wp-includes を丸ごと拒否する設定など）
+  ・全部 200 なのに効かない → キャッシュ（?ver= が上がっていない）、読み込み順、JS の結合・圧縮機能
+  ・JS が動かないときは、コンソールの一番上のエラーを読む
+status: published
+published: 2026-09-16
 verified: 2026-09-12
 ---
 
@@ -63,6 +70,9 @@ Content-Type: text/html
 
 CSS や JS は読めているのに**画像だけが出ない**場合は、原因の切り分け方が変わります。
 → [画像が表示されない](images-not-displaying.md)
+
+サイトは正常で**管理画面だけ**が崩れている場合は、CSS の配信の仕組みが別です。
+→ [管理画面だけ表示が崩れる](admin-styles-broken.md)
 
 ## 確認方法
 
@@ -147,6 +157,7 @@ wp_enqueue_style(
 キャッシュプラグインや CDN が絡む場合は、そちらのキャッシュも消します。
 **「自分のブラウザでは直っているが他の人には古いままに見える」**なら、
 サーバー側かCDN 側のキャッシュです。
+スマホだけが崩れる場合は → [スマホだけレイアウトが崩れる](mobile-layout-broken.md)
 
 ### 読み込み順（依存関係）
 
