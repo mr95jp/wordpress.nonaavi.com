@@ -48,8 +48,8 @@
 ### 撮ったあとの手順
 
 1. ラボで `docs/screenshots/` に画像を置く
-2. このリポジトリで `pnpm sync:articles`（画像だけが追加される。記事はサイト側で編集済みなので上書きされない）
-3. 記事に画像を手で挿入する: `![画面に出ている文言](../screenshots/<カテゴリ>/<ファイル名>)`
+2. このリポジトリで `pnpm sync:articles`（画像が追加される。ラボ側で記事に画像を挿入していれば、その変更もサイト側の記事にマージされる）
+3. マージされなかった記事には画像を手で挿入する: `![画面に出ている文言](../screenshots/<カテゴリ>/<ファイル名>)`
 4. `redirect-loop` と `rest-json-update-failed` は `article-summary` で結論を書く
 5. `article-publish` で公開する
 

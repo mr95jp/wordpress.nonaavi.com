@@ -46,7 +46,7 @@ src/pages/                ルーティング（[slug] / topics/[hub] / symptoms 
 
 ## 記事を追加する
 
-1. `pnpm sync:articles`（ラボに追加した記事を取り込む。既存の記事は上書きしない）
+1. `pnpm sync:articles`（ラボの記事・索引・画像を取り込む。サイト側で手を入れた記事は `.lab-base/` を基準に 3 方向マージする。詳しい手順は `article-import` スキル）
 2. `src/lib/hubs.ts` のどれかのハブの `articles` に slug を追加する
    （**どこにも属さない記事があるとビルドが失敗する**）
 3. 公開するときは front matter の `status` を `published` にする
