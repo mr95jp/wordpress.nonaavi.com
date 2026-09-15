@@ -82,8 +82,34 @@ src/pages/                ルーティング（[slug] / topics/[hub] / symptoms 
 
 ## 配信
 
-`dist/` の中身をそのまま置く。Cloudflare Pages などに接続する場合は
-ビルドコマンド `pnpm build`、出力ディレクトリ `dist`。
+**Cloudflare Pages** で配信する。GitHub の `main` に push すると Cloudflare 側でビルドして公開される。
+全ページ静的なので **`@astrojs/cloudflare` アダプターは入れない**
+（[Astro のガイド](https://docs.astro.build/ja/guides/deploy/cloudflare/) の静的サイト向け設定）。
+
+| Pages の設定 | 値 |
+|---|---|
+| フレームワーク プリセット | Astro |
+| ビルドコマンド | `pnpm build` |
+| ビルド出力ディレクトリ | `dist` |
+| 環境変数 | `PUBLIC_GA_ID`（GA4 の測定 ID） |
+| Node のバージョン | `.node-version` に書いた版が使われる |
+
+独自ドメイン `wordpress.noanavi.com` は、Pages の「カスタムドメイン」に登録し、
+**お名前.com の DNS に CNAME（`wordpress` → `wordpress-noanavi-com.pages.dev`）を足す。**
+noanavi.com のネームサーバーは Cloudflare に移していない（Workers の独自ドメインは移さないと使えないため Pages にした）。
+
+`_redirects`（301）と `404.html` は Pages でそのまま効く。
+`wrangler.jsonc` は置かない（置くと Pages の設定がファイル側に移り、ダッシュボードの環境変数と食い違う）。
+
+手元から直接上げるとき（GitHub を経由しない緊急用）:
+
+```sh
+pnpm exec wrangler login   # 初回だけ
+pnpm deploy                # build → check:site → wrangler pages deploy
+```
+
+**この Mac（macOS 12.6）では Cloudflare の実行環境 workerd が動かない**（13.5 以上が必要）。
+`wrangler dev` と、アダプターを入れたビルドは失敗する。表示の確認は `pnpm preview` で行う。
 
 ### Google Analytics
 

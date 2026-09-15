@@ -6,8 +6,6 @@ import { defineConfig } from 'astro/config';
 import remarkCjkFriendly from 'remark-cjk-friendly';
 import { rehypeArticleLayout, remarkArticleLinks } from './src/lib/markdown.mjs';
 
-import cloudflare from '@astrojs/cloudflare';
-
 const SITE = 'https://wordpress.noanavi.com';
 
 // status: draft の記事はサイトマップから外す（ページ側でも noindex を出す）
@@ -40,6 +38,4 @@ export default defineConfig({
     }),
     shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' } },
   },
-
-  adapter: cloudflare(),
 });
