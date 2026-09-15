@@ -6,6 +6,8 @@ import { defineConfig } from 'astro/config';
 import remarkCjkFriendly from 'remark-cjk-friendly';
 import { rehypeArticleLayout, remarkArticleLinks } from './src/lib/markdown.mjs';
 
+import cloudflare from '@astrojs/cloudflare';
+
 const SITE = 'https://wordpress.noanavi.com';
 
 // status: draft の記事はサイトマップから外す（ページ側でも noindex を出す）
@@ -20,11 +22,14 @@ const draftPaths = new Set(
 export default defineConfig({
   site: SITE,
   trailingSlash: 'always',
+
   // 統合した記事。配信先の 301 は public/_redirects、ここは静的ホスト向けの予備
   redirects: {
     '/rest-api-fatal-http200': '/http-200-when-site-is-down/',
   },
+
   integrations: [sitemap({ filter: (page) => !draftPaths.has(page) })],
+
   markdown: {
     processor: unified({
       // 「…。**次の文」のように約物に隣接する ** を CommonMark は太字にしない
@@ -35,4 +40,6 @@ export default defineConfig({
     }),
     shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' } },
   },
+
+  adapter: cloudflare(),
 });

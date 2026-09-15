@@ -9,13 +9,18 @@
     "preview": "astro preview",
     "check": "astro check",
     "sync:articles": "node scripts/sync-articles.mjs",
-    "check:site": "node scripts/check-site.mjs"
+    "check:site": "node scripts/check-site.mjs",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.3.1",
     "@astrojs/markdown-remark": "^7.3.1",
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.3.2",
     "remark-cjk-friendly": "^2.3.1",
     "sharp": "^0.35.4"
+  },
+  "devDependencies": {
+    "wrangler": "^4.131.2"
   }
 }
