@@ -3,6 +3,11 @@ export const SITE_DESCRIPTION =
   'WordPress の「真っ白」「ログインできない」「500 エラー」を、実際に壊して測った値で切り分けるトラブル対処集。';
 
 // front matter の日付は UTC 0 時で読まれるので UTC で表示する
+// Google Tag Manager。GA4 はコンテナ側で設定する。
+// 本番ドメインで開いたときだけ読み込む（localhost や *.pages.dev の確認を計測に混ぜない）
+export const GTM_ID = 'GTM-KZQKTLS7';
+export const PRODUCTION_HOST = 'wordpress.noanavi.com';
+
 export const OPERATOR_NAME = 'NOANAVI運営者';
 export const OPERATOR_PROFILE = 'WordPress サイトの保守を 7 年担当';
 

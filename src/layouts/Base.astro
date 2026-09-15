@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE_NAME } from '../lib/site';
+import { GTM_ID, PRODUCTION_HOST, SITE_NAME } from '../lib/site';
 
 interface Props {
   title: string;
@@ -12,9 +12,6 @@ interface Props {
 
 const { title, description, noindex = false, ogType = 'website', jsonLd = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-
-// GA4 の測定 ID（G-XXXXXXX）。環境変数 PUBLIC_GA_ID があるときだけタグを出す
-const GA_ID = import.meta.env.PUBLIC_GA_ID;
 ---
 
 <!doctype html>
@@ -35,21 +32,33 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
-    {GA_ID && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />}
-    {
-      GA_ID && (
-        <script is:inline define:vars={{ GA_ID }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            window.dataLayer.push(arguments);
-          }
-          gtag('js', new Date());
-          gtag('config', GA_ID);
-        </script>
-      )
-    }
+    <!-- Google Tag Manager -->
+    <script is:inline define:vars={{ GTM_ID, PRODUCTION_HOST }}>
+      if (location.hostname === PRODUCTION_HOST) {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', GTM_ID);
+      }
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
     <header class="site-header">
       <div class="wrap">
         <a class="site-name" href="/">{SITE_NAME}</a>

@@ -119,14 +119,13 @@ pnpm deploy                # build → check:site → wrangler pages deploy
 **この Mac（macOS 12.6）では Cloudflare の実行環境 workerd が動かない**（13.5 以上が必要）。
 `wrangler dev` と、アダプターを入れたビルドは失敗する。表示の確認は `pnpm preview` で行う。
 
-### Google Analytics
+### Google Tag Manager / GA4
 
-ビルド時に環境変数 `PUBLIC_GA_ID`（`G-` で始まる測定 ID）を渡すと GA4 のタグが入る。
-未設定ならタグは出ない（ローカルのビルドで計測が混ざらない）。
+GTM のコンテナ `GTM-KZQKTLS7` を全ページに入れている（`src/lib/site.ts` の `GTM_ID`）。
+**GA4 は GTM のコンテナ側で設定する**（サイトのコードには GA4 の測定 ID を書かない）。
 
-```sh
-PUBLIC_GA_ID=G-XXXXXXXXXX pnpm build
-```
+タグは `location.hostname` が `wordpress.noanavi.com` のときだけ読み込む。
+`pnpm dev` / `pnpm preview` / `*.pages.dev` のプレビューでのアクセスは計測に混ざらない。
+環境変数の設定は不要。
 
-Cloudflare Pages ならプロジェクトの環境変数に設定する。
 GA4 を使うのでプライバシーポリシー（`/privacy/`）を置いている。
