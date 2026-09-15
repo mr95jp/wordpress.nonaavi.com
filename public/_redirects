@@ -1,3 +1,3 @@
 # Cloudflare Pages / Netlify 用。統合・改名した記事の 301
+# 末尾の / 有無は同じパスとして扱われる。両方書くと Duplicate rule で deploy が失敗する
 /rest-api-fatal-http200/  /http-200-when-site-is-down/  301
-/rest-api-fatal-http200   /http-200-when-site-is-down/  301

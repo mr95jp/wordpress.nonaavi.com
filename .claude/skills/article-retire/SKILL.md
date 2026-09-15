@@ -45,12 +45,13 @@ grep -rn '<消す slug>' src/ public/ astro.config.mjs scripts/
 
 ```
 public/_redirects          /<消す slug>/  /<残す slug>/  301
-                           /<消す slug>   /<残す slug>/  301
 astro.config.mjs           redirects: { '/<消す slug>': '/<残す slug>/' }
 scripts/sync-articles.mjs  RETIRED に '<消す slug>'
 ```
 
 `_redirects` が本物の 301（Cloudflare Pages / Netlify）。
+**`_redirects` は 1 つのパスに 1 行だけ。**末尾の `/` 有無は同じパスとして扱われ、
+両方書くと Cloudflare が `Duplicate rule` で deploy を失敗させる。
 `astro.config.mjs` の転送は、それ以外の静的ホスト向けの予備（meta refresh + canonical）。
 `RETIRED` に足さないと、次の `pnpm sync:articles` で記事が戻ってくる。
 
