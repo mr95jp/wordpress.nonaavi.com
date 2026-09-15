@@ -1,0 +1,18 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const entry = await getEntry('indexes', 'symptoms');
+if (!entry) throw new Error('src/content/indexes/symptoms.md がありません');
+const { Content } = await render(entry);
+---
+
+<Base
+  title="WordPress の不具合を症状から探す｜見えている画面・直前の操作から原因を引く"
+  description="真っ白、500エラー、ログインできない、表示が崩れる。見えている症状と直前にやったことから、WordPressの不具合の原因と対処法の記事を引ける索引です。"
+>
+  <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">トップ</a> › 症状から探す</nav>
+  <div class="prose">
+    <Content />
+  </div>
+</Base>

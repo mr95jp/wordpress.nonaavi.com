@@ -1,0 +1,3 @@
+# Cloudflare Pages / Netlify 用。統合・改名した記事の 301
+/rest-api-fatal-http200/  /http-200-when-site-is-down/  301
+/rest-api-fatal-http200   /http-200-when-site-is-down/  301

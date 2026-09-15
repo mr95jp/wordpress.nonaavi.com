@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { HUBS } from '../lib/hubs';
+import { SITE_DESCRIPTION, SITE_NAME, formatDate } from '../lib/site';
+
+const recent = (await getCollection('articles'))
+  .sort((a, b) => b.data.verified.getTime() - a.data.verified.getTime())
+  .slice(0, 8);
+
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: Astro.site?.href },
+];
+---
+
+<Base title={`${SITE_NAME} — WordPress の不具合を症状から切り分ける`} description={SITE_DESCRIPTION} jsonLd={jsonLd}>
+  <section class="hero">
+    <h1>WordPress の不具合を、<br />見えている症状から切り分ける</h1>
+    <p>
+      検証用のサーバーで実際に壊し、ステータスコード・ログ・画面を測った結果だけを書いています。
+      いま困っている症状を選んでください。
+    </p>
+  </section>
+
+  <section>
+    <h2 class="visually-hidden">症状から選ぶ</h2>
+    <ul class="hub-grid">
+      {
+        HUBS.map((hub) => (
+          <li>
+            <a href={`/topics/${hub.id}/`}>
+              <span class="hub-label">{hub.label}</span>
+              <span class="hub-examples">{hub.rows.slice(0, 3).map((r) => r.see).join(' / ')}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="more">
+      <a href="/symptoms/">症状・直前にやったことの一覧</a> ・ <a href="/plugins/">プラグイン名から探す</a>
+    </p>
+  </section>
+
+  <section>
+    <h2>最近検証した記事</h2>
+    <ul class="list">
+      {
+        recent.map((a) => (
+          <li>
+            <a href={`/${a.id}/`}>{a.data.title}</a>
+            <span class="date">{formatDate(a.data.verified)}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

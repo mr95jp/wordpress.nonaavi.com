@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import { OPERATOR_NAME, OPERATOR_PROFILE, SITE_NAME } from '../lib/site';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: `このサイトについて｜${SITE_NAME}`,
+    mainEntity: { '@type': 'Person', name: OPERATOR_NAME, description: OPERATOR_PROFILE },
+  },
+];
+---
+
+<Base
+  title={`このサイトについて｜${SITE_NAME}`}
+  description="記事はすべて検証用サーバーで実際に不具合を再現し、ステータスコード・ログ・画面を測った結果に基づいています。運営者・検証環境・記事の方針を説明します。"
+  jsonLd={jsonLd}
+>
+  <div class="prose">
+    <h1>このサイトについて</h1>
+
+    <h2>運営者</h2>
+    <p><strong>{OPERATOR_NAME}</strong></p>
+    <p>{OPERATOR_PROFILE}。</p>
+    <p>
+      このサイトでは、WordPress の不具合を検証環境で実際に起こし、
+      何が起きているのかを測った結果を公開しています。
+    </p>
+
+    <h2>検証環境</h2>
+    <p>
+      同じ WordPress と同じデータベースを、2 種類の Web サーバーから同時に見られる検証環境を使っています。
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>構成</th><th>想定している本番環境</th><th>この構成でしか起きないこと</th></tr></thead>
+        <tbody>
+          <tr><td>Apache + mod_php</td><td>国内のレンタルサーバー</td><td><code>.htaccess</code> による 500 エラー・リライトループ</td></tr>
+          <tr><td>nginx + php-fpm</td><td>VPS・クラウド</td><td>502 Bad Gateway・504 Gateway Timeout</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      同じ操作を両方に行い、挙動が分かれたら原因は Web サーバー層にあると判断できます。
+      PHP と MySQL はバージョンを切り替えて、同じコードの挙動を比較しています。
+      記事中のスクリーンショットやエラーメッセージに出てくる「Error Lab」「lab-」で始まる名前は、この検証環境のものです。
+    </p>
+
+    <h2>記事の方針</h2>
+    <ul>
+      <li><strong>実測値が取れていない事例は記事にしません。</strong>「たぶんこうなる」は書きません。</li>
+      <li>画面に症状が出る記事には、その画面のスクリーンショットを入れます。</li>
+      <li>各記事に検証した日付を表示しています。</li>
+      <li>特定のプラグインのバージョンでだけ起きる不具合は扱いません。</li>
+    </ul>
+
+    <h2>ご利用にあたって</h2>
+    <p>
+      記事の内容は検証した時点のものです。本番のサイトで設定やファイルを変更するときは、
+      必ずバックアップを取ってから行ってください。
+      取り扱う情報については<a href="/privacy/">プライバシーポリシー</a>をご覧ください。
+    </p>
+  </div>
+</Base>

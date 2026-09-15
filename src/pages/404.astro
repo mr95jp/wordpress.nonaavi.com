@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { HUBS } from '../lib/hubs';
+---
+
+<Base title="ページが見つかりません" description="お探しのページは見つかりませんでした。" noindex>
+  <h1>ページが見つかりません</h1>
+  <p>URL が変わったか、削除された可能性があります。症状から探してください。</p>
+  <ul class="list">
+    {HUBS.map((hub) => <li><a href={`/topics/${hub.id}/`}>{hub.label}</a></li>)}
+  </ul>
+</Base>

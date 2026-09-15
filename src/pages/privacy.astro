@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { OPERATOR_NAME, SITE_NAME } from '../lib/site';
+---
+
+<Base
+  title={`プライバシーポリシー｜${SITE_NAME}`}
+  description={`${SITE_NAME}のプライバシーポリシーと免責事項です。アクセス解析（Google Analytics）での情報の取り扱いについて説明します。`}
+>
+  <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">トップ</a> › プライバシーポリシー</nav>
+  <div class="prose">
+    <h1>プライバシーポリシー</h1>
+
+    <h2>アクセス解析について</h2>
+    <p>
+      当サイトでは、記事の改善と利用状況の把握のために、Google が提供するアクセス解析ツール
+      「Google アナリティクス」を使用しています。
+    </p>
+    <p>
+      Google アナリティクスは Cookie を使用して、閲覧されたページ、参照元、
+      端末やブラウザの種類、おおよその地域などの情報を収集します。
+      これらの情報に、氏名やメールアドレスなど個人を特定する情報は含まれません。
+    </p>
+    <p>
+      収集されたデータは Google のプライバシーポリシーに基づいて管理されます。
+      詳しくは
+      <a href="https://policies.google.com/technologies/partner-sites?hl=ja" rel="noopener">Google のサービスを使用するサイトやアプリから収集した情報の Google による使用</a>
+      をご覧ください。
+    </p>
+
+    <h2>収集を無効にする方法</h2>
+    <ul>
+      <li>ブラウザの設定で Cookie を無効にする</li>
+      <li>
+        <a href="https://tools.google.com/dlpage/gaoptout?hl=ja" rel="noopener">Google アナリティクス オプトアウト アドオン</a>
+        を利用する
+      </li>
+    </ul>
+
+    <h2>免責事項</h2>
+    <p>
+      記事の内容は、検証環境で確認した時点の結果に基づいています。
+      WordPress・PHP・サーバー・プラグインのバージョンや設定によって、結果が異なる場合があります。
+    </p>
+    <p>
+      記事の手順を実行したことで生じた損害について、当サイトは責任を負いません。
+      本番のサイトで作業する前に、必ずバックアップを取ってください。
+    </p>
+
+    <h2>改定</h2>
+    <p>このポリシーは、必要に応じて予告なく改定することがあります。</p>
+
+    <p>制定日: 2026年9月14日<br />運営者: {OPERATOR_NAME}</p>
+  </div>
+</Base>
