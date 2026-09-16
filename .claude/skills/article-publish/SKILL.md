@@ -111,7 +111,19 @@ pnpm build && pnpm check:site --slug <slug>
 - この記事に警告が出ていない（title の表示幅・description・og:image を含む）
 - サイトマップに載っている（published なのに載っていなければエラーになる）
 
-## 10. TODO を更新する
+## 10. 公開後に検索エンジンへ知らせる
+
+push して Cloudflare Pages のデプロイが終わったら、公開した URL を IndexNow に送る
+（Bing・Copilot 向け。Google は非対応なので Search Console 側で待つ）。
+
+```sh
+pnpm indexnow /<slug>/       # 公開した記事だけ
+pnpm indexnow                # サイトマップの全 URL（大きく作り替えたとき）
+```
+
+**デプロイ前に実行すると鍵の確認に失敗する**ので、本番に反映されてから実行する。
+
+## 11. TODO を更新する
 
 `docs/todo.md` から公開した記事を消し（チェックを付けるか行を削除し）、冒頭の「公開済み・下書き」の本数と最終更新日を直す。
 スクリーンショットが無くて公開を止めた記事は、撮る画面を具体的に `docs/todo.md` の 1 に書き足す。

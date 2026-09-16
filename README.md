@@ -15,6 +15,7 @@ pnpm preview          # dist/ を確認
 pnpm sync:articles    # ラボから新しい記事・スクリーンショットを取り込む
 pnpm check:site       # dist/ を検査（リンク切れ・noindex・title の長さ・og:image など）
 pnpm og               # OG 画像を public/og/ に生成（タイトルを変えたら実行する）
+pnpm indexnow         # 更新した URL を IndexNow に通知（Bing 向け。デプロイ後に実行）
 ```
 
 ## Claude Code のスキル
