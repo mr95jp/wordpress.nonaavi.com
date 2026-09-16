@@ -63,6 +63,10 @@
 ## 4. その他
 
 - [ ] Search Console にサイトマップ `sitemap-index.xml` を送信する
+- [x] IndexNow を導入（2026-09-16、51 URL を送信して 202）。記事を公開したら `pnpm indexnow /<slug>/`
+- [ ] **Bing Webmaster Tools に登録する**（Microsoft アカウントのログインが必要）。
+      https://www.bing.com/webmasters で「Google Search Console からインポート」が最短。
+      ファイルやメタタグでの所有権確認を選んだ場合は、その内容をサイトに組み込む
 - [ ] サイト名「WP復旧ラボ」と、`plugin-conflict-diagnosis` の参考文献にある「WP復旧本舗」が似ている。混同されないか検討する
 - [ ] GitHub のリポジトリ名が `wordpress.nonaavi.com`（綴り違い）。変える場合は Cloudflare Pages の Git 連携を確認する
 - [ ] 運営者情報を充実させる（`/about/`）。記事の信頼性の評価に効く
