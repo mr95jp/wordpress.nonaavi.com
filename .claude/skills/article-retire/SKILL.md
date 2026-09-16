@@ -61,6 +61,8 @@ README の「統合済み」の行にも追記する。
 
 ```sh
 rm src/content/articles/<消す slug>.md
+rm public/og/<消す slug>.png public/og/<消す slug>.png.svg   # OG 画像
+pnpm og                                                     # 残す記事のタイトルを変えた場合
 ```
 
 ## 6. 確認

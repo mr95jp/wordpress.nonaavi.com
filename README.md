@@ -13,7 +13,8 @@ pnpm dev              # http://localhost:4321
 pnpm build            # dist/ に HTML を出力
 pnpm preview          # dist/ を確認
 pnpm sync:articles    # ラボから新しい記事・スクリーンショットを取り込む
-pnpm check:site       # dist/ を検査（リンク切れ・noindex・ラボ専用の記述など）
+pnpm check:site       # dist/ を検査（リンク切れ・noindex・title の長さ・og:image など）
+pnpm og               # OG 画像を public/og/ に生成（タイトルを変えたら実行する）
 ```
 
 ## Claude Code のスキル
