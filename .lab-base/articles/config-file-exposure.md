@@ -97,6 +97,10 @@ cp wp-config.php wp-config.php.bak
 cp wp-config.php ~/backup/wp-config.php.20260912
 ```
 
+移行プラグインが書き出すバックアップも同じです。**中身はデータベース全体**で、
+置き場所は公開領域です（実測しました）。
+→ [All-in-One WP Migration の .wpress は未ログインで取得できる](ai1wm-backup-exposure.md)
+
 ### 2. サーバー設定で拡張子を塞ぐ
 
 Apache（`.htaccess`）の場合です。**WordPress のブロックより前に書きます**

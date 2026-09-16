@@ -14,6 +14,7 @@
 |---|---|---|
 | **SiteGuard WP Plugin** | 有効化した瞬間に `wp-login.php` が 404。ログインできない | [新しい URL は /wp-admin/ が教えてくれる](articles/siteguard-lockout.md) |
 | **Contact Form 7** | 送信ボタンがぐるぐる回ったまま止まらない | [「キャッシュで nonce が切れる」は現行版では起きない](articles/contact-form-7-not-sending.md) |
+| **All-in-One WP Migration** | 書き出したバックアップが公開領域に残る / インポートできない | [.wpress は未ログインで取得できる](articles/ai1wm-backup-exposure.md) |
 
 国内のレンタルサーバーが標準で導入していることが多く、遭遇率が高いため実測した。
 **ログイン URL の形（`/login_数字.php`）、ロックの解除条件、既定でオフの機能**まで

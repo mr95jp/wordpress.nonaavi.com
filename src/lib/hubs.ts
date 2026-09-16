@@ -151,6 +151,7 @@ export const HUBS: Hub[] = [
       'verify-checksums-blind-spots',
       'attack-surface-audit',
       'config-file-exposure',
+      'ai1wm-backup-exposure',
       'broken-access-control',
     ],
     rows: [
@@ -158,6 +159,7 @@ export const HUBS: Hub[] = [
       { see: '改ざんを検査したい', suspect: 'verify-checksums は wp-content を見ていない', slug: 'verify-checksums-blind-spots' },
       { see: '不審なログイン試行が大量に来る', suspect: 'ユーザー名の漏洩・試行制限なし', slug: 'attack-surface-audit' },
       { see: '設定ファイルが漏れていないか心配', suspect: '本体ではなくバックアップファイル', slug: 'config-file-exposure' },
+      { see: '移行に使ったバックアップが残っていないか心配', suspect: '.wpress が未ログインで取得できる。自動では消えない', slug: 'ai1wm-backup-exposure' },
       { see: 'プラグイン開発で権限チェックが不安', suspect: 'permission_callback・is_admin()', slug: 'broken-access-control' },
     ],
   },
