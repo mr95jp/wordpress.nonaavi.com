@@ -10,11 +10,20 @@ const SITE = 'https://wordpress.noanavi.com';
 
 // status: draft の記事はサイトマップから外す（ページ側でも noindex を出す）
 const articlesDir = new URL('./src/content/articles/', import.meta.url);
+const articleFiles = readdirSync(articlesDir).filter((f) => f.endsWith('.md'));
 const draftPaths = new Set(
-  readdirSync(articlesDir)
-    .filter((f) => f.endsWith('.md'))
+  articleFiles
     .filter((f) => /^status:\s*draft\s*$/m.test(readFileSync(new URL(f, articlesDir), 'utf8')))
     .map((f) => `${SITE}/${f.replace(/\.md$/, '')}/`),
+);
+
+// サイトマップの lastmod。updated > published > verified の順で新しい日付を使う
+const lastmod = new Map(
+  articleFiles.map((f) => {
+    const src = readFileSync(new URL(f, articlesDir), 'utf8');
+    const date = (key) => src.match(new RegExp(`^${key}:\\s*(\\d{4}-\\d{2}-\\d{2})`, 'm'))?.[1];
+    return [`${SITE}/${f.replace(/\.md$/, '')}/`, date('updated') ?? date('published') ?? date('verified')];
+  }),
 );
 
 export default defineConfig({
@@ -26,7 +35,15 @@ export default defineConfig({
     '/rest-api-fatal-http200': '/http-200-when-site-is-down/',
   },
 
-  integrations: [sitemap({ filter: (page) => !draftPaths.has(page) })],
+  integrations: [
+    sitemap({
+      filter: (page) => !draftPaths.has(page),
+      serialize: (item) => {
+        const date = lastmod.get(item.url);
+        return date ? { ...item, lastmod: `${date}T00:00:00+09:00` } : item;
+      },
+    }),
+  ],
 
   markdown: {
     processor: unified({

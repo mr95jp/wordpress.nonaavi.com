@@ -1,8 +1,8 @@
 ---
 title: "functions.phpを編集してサイトが真っ白・500になった時の復旧方法"
 slug: functions-php-broken-recovery
-seo_title: "functions.php 編集 エラー・真っ白｜復旧方法（管理画面に入れない）"
-description: "functions.phpを編集したらサイトが真っ白・500になり管理画面にも入れない時の復旧方法。構文エラーはwp-login.phpまで500、末尾の空白は200のままログイン不能になる。WP-CLIの--skip-themesとFTPでの復旧を実測。"
+seo_title: "functions.php 編集で真っ白｜復旧の手順"
+description: "functions.phpを編集してサイトが真っ白・500になり管理画面に入れない時の復旧方法。構文エラーと末尾の空白で症状が違うこと、FTPとWP-CLIでの戻し方を実測。"
 keywords: "functions.php 編集 エラー, functions.php 真っ白, functions.php 500, テーマ編集 管理画面 入れない, headers already sent, wp-login.php 500"
 category: 障害報告
 tags: [wordpress, テーマ, functions-php, wp-cli, headers-already-sent]

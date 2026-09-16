@@ -1,7 +1,7 @@
 ---
 title: "WordPressのブロックエディターが真っ白・使えない時の対処法"
 slug: block-editor-blank
-seo_title: "ブロックエディター 真っ白・Gutenberg 使えない｜投稿画面の直し方"
+seo_title: "ブロックエディターが真っ白｜投稿画面の直し方"
 description: "投稿・固定ページの編集画面（ブロックエディター/Gutenberg）が真っ白で使えない時の対処法。REST APIとJavaScriptの読み込みが原因。ログイン不要で外から確認できる方法を実測で解説。"
 keywords: "ブロックエディター 真っ白, Gutenberg 使えない, 投稿画面 真っ白, 編集画面 白い, ブロックエディター 読み込めない, block-editor.min.js"
 category: 障害報告

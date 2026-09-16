@@ -1,7 +1,7 @@
 ---
 title: "WordPressで画像をアップロードできない・HTTPエラーの対処法"
 slug: media-upload-failure
-seo_title: "WordPress 画像 アップロードできない・HTTPエラーの直し方"
+seo_title: "WordPress 画像をアップロードできない｜対処法"
 description: "WordPressで画像をアップロードできない・「HTTPエラー」が出る時の対処法。原因はサイズ超過2種類か年月ディレクトリの権限で、画面のメッセージから原因を引く。post_max_size超過は200のまま失敗する実測も。"
 keywords: "WordPress 画像 アップロードできない, HTTPエラー 画像, メディア アップロードできない, 画像 追加できない, upload_max_filesize, post_max_size"
 category: 障害報告

@@ -1,8 +1,8 @@
 ---
 title: "SiteGuardでログインできなくなった時の対処法（LOGIN LOCKED・404）"
 slug: siteguard-lockout
-seo_title: "SiteGuard ログインできない・LOGIN LOCKED の解除方法"
-description: "SiteGuard WP Pluginでログインできない時の対処法。wp-login.phpが404になる・ERROR: LOGIN LOCKEDでロックされた場合の解除方法を実測。新しいログインURLは/wp-admin/を開けば分かる。ロック解除は最後の失敗から約60秒。"
+seo_title: "SiteGuard ログインできない｜ロック解除の手順"
+description: "SiteGuardでログインできない時の対処法。wp-login.phpが404、ERROR: LOGIN LOCKEDの解除方法を実測。新しいログインURLは/wp-admin/を開けば分かる。ロックは最後の失敗から約60秒。"
 keywords: "SiteGuard ログインできない, LOGIN LOCKED 解除, SiteGuard 404, ログインページ 変更 わからない, SiteGuard ロック 解除, wp-login.php 404"
 category: 障害報告
 tags: [wordpress, siteguard, セキュリティプラグイン, ログイン, レンタルサーバー]

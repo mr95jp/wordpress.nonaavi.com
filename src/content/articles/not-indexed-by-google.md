@@ -1,7 +1,7 @@
 ---
 title: "WordPressサイトが検索結果に出てこない・インデックスされない時の対処法"
 slug: not-indexed-by-google
-seo_title: "WordPress Google 出てこない・インデックスされない｜確認方法"
+seo_title: "WordPress が検索に出てこない｜確認する順番"
 description: "公開したのにGoogle検索に出てこない・インデックスされない時の対処法。原因の多くは「検索エンジンにインデックスさせない」設定。noindex・robots.txt・サイトマップを1分で確認する方法を実測で解説。"
 keywords: "WordPress 検索に出てこない, Google インデックスされない, 検索結果 出ない, noindex 外し方, サイトマップ 404, 検索エンジン インデックス"
 category: 技術メモ

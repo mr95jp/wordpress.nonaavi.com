@@ -1,7 +1,7 @@
 ---
 title: "「メンテナンスのためしばらく利用できません」が消えない時の対処法"
 slug: maintenance-mode-stuck
-seo_title: "WordPress メンテナンス中が消えない｜.maintenance の削除"
+seo_title: "WordPress メンテナンス中が消えない｜対処法"
 description: "更新が途中で止まって「メンテナンスのためしばらく利用できません」が消えない時の対処法。原因は.maintenanceファイルの残留。中の時刻が10分より古いと自動解除されることを実測。FTPでの削除手順も。"
 keywords: "WordPress メンテナンス中 消えない, メンテナンスのためしばらく利用できません, .maintenance, 更新 止まった, メンテナンスモード 解除"
 category: 障害報告

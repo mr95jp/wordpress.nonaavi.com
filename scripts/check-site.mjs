@@ -65,6 +65,15 @@ for (const file of pages) {
 
   const stars = (stripCode(html).match(/\*\*/g) ?? []).length;
   if (stars) errors.push(`${page}: 太字にならず残った ** が ${stars} 個`);
+
+  // 検索結果での表示幅。全角 32 文字相当で切られる（半角は 0.5 で数える）
+  const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? '';
+  const titleWidth = [...title].reduce((n, c) => n + (/[\x20-\x7e]/.test(c) ? 0.5 : 1), 0);
+  if (titleWidth > 32) warnings.push(`${page}: title が全角 ${titleWidth} 文字相当（32 を超えると検索結果で切れる）`);
+  const desc = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+  if (desc && desc.length > 120) warnings.push(`${page}: description が ${desc.length} 文字（120 文字程度に）`);
+  if (!desc && !html.includes('http-equiv="refresh"')) warnings.push(`${page}: description が無い`);
+  if (!html.includes('property="og:image"')) warnings.push(`${page}: og:image が無い`);
 }
 
 const articles = readdirSync(articlesDir).filter((f) => f.endsWith('.md'));

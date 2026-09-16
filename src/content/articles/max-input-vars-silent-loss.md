@@ -1,7 +1,7 @@
 ---
 title: "WordPressでメニュー・設定が保存できない・一部消える時の対処法"
 slug: max-input-vars-silent-loss
-seo_title: "WordPress 保存できない・一部消える｜max_input_vars の対処法"
+seo_title: "WordPress 保存できない・一部消える｜原因と対処"
 description: "WordPressでメニューやカスタムフィールドが保存できない・保存したのに一部だけ消える時の対処法。原因はmax_input_vars超過で、警告はdebug.logに出ずPHPログにしか出ない。120個送って51個しか届かない実測。"
 keywords: "WordPress 保存できない, メニュー 保存できない, 設定 保存できない, 一部 消える, max_input_vars, カスタムフィールド 保存されない, ACF 消える"
 category: 障害報告

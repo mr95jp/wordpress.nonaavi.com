@@ -1,7 +1,7 @@
 ---
 title: "Contact Form 7で送信できない・くるくる止まらない時の対処法"
 slug: contact-form-7-not-sending
-seo_title: "Contact Form 7 送信できない・くるくる｜原因と対処法"
+seo_title: "Contact Form 7 送信できない｜原因と対処"
 description: "Contact Form 7で送信ボタンがくるくる回ったまま止まらない・送信できない時の対処法。原因はREST APIの到達性で、「キャッシュでnonceが切れる」は現行版では起きないことを実測。症状で3つに切り分ける。"
 keywords: "Contact Form 7 送信できない, Contact Form 7 くるくる, フォーム 送信できない, CF7 くるくる 止まらない, 問い合わせフォーム 送信できない"
 category: 障害報告

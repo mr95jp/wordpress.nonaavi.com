@@ -1,8 +1,8 @@
 ---
 title: "WordPressのエラーログはどこにある？debug.logの場所と見方"
 slug: where-are-the-logs
-seo_title: "WordPress ログの場所・debug.log の見方｜エラー確認方法"
-description: "WordPressのログはどこにあり、どの障害がどこに記録されるかを実測で一覧化。debug.logに出ないエラー（max_input_vars/post_max_size超過はPHPログのみ、外部リダイレクトループはどこにも出ない）も明記。"
+seo_title: "WordPress ログの場所｜debug.log の見方"
+description: "WordPressのログはどこにあり、どの障害がどこに記録されるかを実測で一覧化。max_input_vars超過はPHPログだけ、外部リダイレクトループはどこにも出ない。"
 keywords: "WordPress ログ 場所, debug.log どこ, WordPress エラーログ 見方, error_log 場所, デバッグ ログ 出し方, WP_DEBUG"
 category: 技術メモ
 tags: [wordpress, ログ, debug-log, デバッグ, 障害対応]

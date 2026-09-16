@@ -1,7 +1,7 @@
 ---
 title: "WordPressの管理画面だけ真っ白になる時の対処法（サイトは表示される）"
 slug: admin-only-white-screen
-seo_title: "WordPress 管理画面だけ真っ白｜フロントは正常な時の直し方"
+seo_title: "WordPress 管理画面だけ真っ白｜原因と対処"
 description: "サイトは表示されるのに管理画面（wp-admin）だけ真っ白・重大なエラーになる時の対処法。管理画面でだけ動くコードが原因で、フロントが無事なので調査を止めずに済む。切り分けの型を実測で解説。"
 keywords: "WordPress 管理画面 真っ白, wp-admin 真っ白, 管理画面だけ 白い, ダッシュボード 真っ白, 管理画面 重大なエラー"
 category: 障害報告

@@ -1,7 +1,7 @@
 ---
 title: "WordPressで絵文字が保存できない・時刻がずれる時の対処法（移行後）"
 slug: emoji-and-timezone
-seo_title: "WordPress 絵文字 消える・投稿時間 ずれる｜移行後の対処法"
+seo_title: "WordPress 絵文字が消える・時刻がずれる｜対処"
 description: "サーバー移行後に絵文字が保存できない・投稿時刻が9時間ずれる時の対処法。utf8テーブルは日本語は通るが絵文字でエラー1366、date()とcurrent_time()でタイムゾーンが違うことを実測。文字化けの原因も。"
 keywords: "WordPress 絵文字 消える, 絵文字 保存できない, 文字化け 移行, 投稿時間 ずれる, 予約投稿 時間 ずれる, utf8mb4, タイムゾーン 9時間"
 category: 障害報告

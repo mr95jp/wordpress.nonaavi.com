@@ -1,7 +1,7 @@
 ---
 title: "FTPとphpMyAdminだけでWordPressを復旧する方法（WP-CLIが無いサーバー）"
 slug: recovery-without-wp-cli
-seo_title: "WordPress FTP・phpMyAdmin で復旧｜プラグイン停止・テーマを戻す手順"
+seo_title: "WordPress 復旧｜FTP・phpMyAdmin だけの手順"
 description: "WordPressの管理画面に入れない・WP-CLIが無いレンタルサーバーでの復旧方法。プラグインやテーマのフォルダをFTPでリネームする、phpMyAdminでテーマを戻す等を実測。何ができて何ができないかを整理。"
 keywords: "WordPress 管理画面 入れない 復旧, プラグイン 停止 FTP, phpMyAdmin テーマ 戻す, WP-CLI 無い, レンタルサーバー 復旧, active_plugins"
 category: 障害報告

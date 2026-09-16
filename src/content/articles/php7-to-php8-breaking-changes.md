@@ -1,7 +1,7 @@
 ---
 title: "PHP8にしたらサイトが動かない・エラーが出る時の対処法（PHP7から移行）"
 slug: php7-to-php8-breaking-changes
-seo_title: "PHP8 移行 エラー・動かない｜PHP7で動いたコードが壊れる原因"
+seo_title: "PHP8 でサイトが動かない｜PHP7 からの移行"
 description: "PHPを7から8に上げたらサイトが動かない・エラーが出る時の対処法。create_function・is_admin・波括弧などが8でFatalになる6パターンを7.4と8.2で実測。0=='文字列'が警告なしで反転する落とし穴も。"
 keywords: "PHP8 エラー, PHP8 動かない, PHP アップデート 白い, PHP7 PHP8 移行, create_function 削除, PHP8 Fatal error, PHP バージョン 上げたら"
 category: 技術メモ

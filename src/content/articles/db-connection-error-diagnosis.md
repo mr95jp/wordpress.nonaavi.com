@@ -2,7 +2,7 @@
 title: "「データベース接続確立エラー」の対処法 — 原因の切り分け方"
 slug: db-connection-error-diagnosis
 seo_title: "WordPress データベース接続確立エラー｜原因と対処法"
-description: "「データベース接続確立エラー（Error establishing a database connection）」の対処法。5つの原因で画面は完全に同一だが、MySQLのエラー番号（1045認証/2002到達性/1040接続数）で切り分けられることを実測。DB名の誤りはWP-CLIだけが教える。"
+description: "「データベース接続確立エラー」の対処法。5つの原因で画面は完全に同一。MySQLのエラー番号（1045認証/2002到達性/1040接続数）で切り分ける手順と、DB名の誤りの見つけ方を実測。"
 keywords: "データベース接続確立エラー, Error establishing a database connection, WordPress DB エラー, データベース 接続できない, 接続確立エラー 対処"
 category: 障害報告
 tags: [wordpress, mysql, データベース, wp-cli, 障害切り分け]

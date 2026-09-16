@@ -19,7 +19,7 @@ export const HUBS: Hub[] = [
     id: 'error-screen',
     label: '真っ白・エラー画面が出る',
     title: 'WordPress が真っ白・エラー画面になったとき',
-    seoTitle: 'WordPress 真っ白・エラー画面の対処法｜症状と直前の操作から原因を絞る',
+    seoTitle: 'WordPress 真っ白・エラー画面｜症状から探す',
     description:
       'WordPressが真っ白、「重大なエラー」、500エラー、データベース接続確立エラー、メンテナンス中が消えない。画面の見え方と直前にやったことから原因の記事へ案内します。',
     lead: '白画面は「エラーが出ていない」状態ではありません。エラーは出ているのに表示しない設定になっているだけです。まず見えている画面と、直前にやったことを確認してください。',
@@ -48,7 +48,7 @@ export const HUBS: Hub[] = [
     id: 'cannot-login',
     label: 'ログイン・管理画面に入れない',
     title: 'WordPress にログインできない・管理画面に入れないとき',
-    seoTitle: 'WordPress ログインできない・管理画面に入れない｜症状別の原因と対処法',
+    seoTitle: 'WordPress ログインできない｜症状から探す',
     description:
       'パスワードは合っているのにログインできない、ログイン画面に戻される、リダイレクトが多すぎます、SiteGuardでロックされた、権限がありません。症状別に原因の記事へ案内します。',
     lead: 'ログインできない原因は Cookie・URL 設定・メール・Fatal の 4 パターンにほぼ分かれます。まず、どの画面で止まっているかを確認してください。',
@@ -72,7 +72,7 @@ export const HUBS: Hub[] = [
     id: 'display-broken',
     label: '表示が崩れる・読み込めない',
     title: 'WordPress の表示が崩れる・画像や CSS が読み込めないとき',
-    seoTitle: 'WordPress 表示崩れ・CSS 効かない・画像が出ない｜原因の切り分け',
+    seoTitle: 'WordPress 表示が崩れる｜症状から探す',
     description:
       'CSSが効かない、スマホだけ崩れる、画像が表示されない、SSL化したら崩れた、ブロックエディターが真っ白、記事だけ404。ページ自体は表示される不具合の原因を切り分けます。',
     lead: 'このグループの不具合は、ページ本体が正常（HTTP 200）で返っています。壊れているのはページの中で読み込む CSS・JS・画像のほうです。',
@@ -99,7 +99,7 @@ export const HUBS: Hub[] = [
     id: 'cannot-save',
     label: '保存・投稿・送信ができない',
     title: 'WordPress で保存・投稿・送信ができないとき',
-    seoTitle: 'WordPress 保存できない・予約投稿されない・メールが届かない｜原因と対処法',
+    seoTitle: 'WordPress 保存・送信ができない｜症状から探す',
     description:
       '「更新に失敗しました」、メニューが一部消える、画像をアップロードできない、予約投稿されない、メールが届かない、Contact Form 7が送信できない。操作が完了しない不具合の原因を切り分けます。',
     lead: '保存や送信の失敗は、画面にエラーが出ないまま一部だけ捨てられていることがあります。「失敗した」のか「黙って欠けた」のかを先に分けてください。',
@@ -126,7 +126,7 @@ export const HUBS: Hub[] = [
     id: 'slow-seo',
     label: '遅い・検索に出ない',
     title: 'WordPress が重い・検索結果に出てこないとき',
-    seoTitle: 'WordPress 重い・インデックスされない・サイトマップエラー｜原因の確かめ方',
+    seoTitle: 'WordPress が重い・検索に出ない｜症状から探す',
     description:
       'WordPressが重い、管理画面だけ遅い、Googleの検索結果に出てこない、RSSやサイトマップだけ壊れる。数値で原因を確かめる方法を実測で解説します。',
     lead: '「重い」も「検索に出ない」も、推測で設定を変える前に数値で確かめられます。',
@@ -142,7 +142,7 @@ export const HUBS: Hub[] = [
     id: 'security',
     label: '乗っ取り・改ざん・セキュリティ',
     title: 'WordPress の乗っ取り・改ざん・セキュリティ確認',
-    seoTitle: 'WordPress 乗っ取り・改ざんの確認方法とセキュリティ対策｜実測',
+    seoTitle: 'WordPress 乗っ取り・改ざん｜確認と対策',
     description:
       '知らない管理者がいる、スパムリンクが埋め込まれた、改ざんチェックの方法、wp-config.phpの漏洩、攻撃者から見えている情報。既定のWordPressを実測して確認方法と対策をまとめます。',
     lead: '改ざんの多くは wp-content とデータベースに残ります。本体のファイル検査だけでは見つかりません。',
@@ -167,7 +167,7 @@ export const HUBS: Hub[] = [
     id: 'diagnosis',
     label: '原因の調べ方',
     title: 'WordPress の不具合の原因を調べる方法',
-    seoTitle: 'WordPress エラーの調べ方｜ログの場所・サイトヘルス・監視の落とし穴',
+    seoTitle: 'WordPress エラーの調べ方｜ログと監視',
     description:
       'WordPressのエラーログの場所、サイトヘルスの「重大な問題」の読み方、サイトが壊れているのに監視がHTTP 200を返す理由。原因を推測する前に取る値をまとめます。',
     lead: 'ステータスコードだけでは判断できません。サイトが死んでいても 200 が返るケースがあります。',

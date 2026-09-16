@@ -1,7 +1,7 @@
 ---
 title: "WordPressプラグインの権限チェック不備 — 脆弱性の実測と対策"
 slug: broken-access-control
-seo_title: "WordPress 権限チェック 不備・Broken Access Control｜実測と対策"
+seo_title: "WordPress 権限チェックの不備｜実測と対策"
 description: "2026年に最多のプラグイン脆弱性・権限チェックの不備を脆弱コードと修正版で実測。permission_callback=__return_trueは未ログインで書き込める、is_adminは購読者でもtrueなど。開発者向けの原則も。"
 keywords: "WordPress 脆弱性, Broken Access Control, permission_callback, current_user_can, is_admin 権限, プラグイン 脆弱性, 権限チェック"
 category: 技術メモ

@@ -1,7 +1,7 @@
 ---
 title: "WordPressでリダイレクトが多すぎます（ERR_TOO_MANY_REDIRECTS）の対処法"
 slug: redirect-loop
-seo_title: "リダイレクトが繰り返される・ERR_TOO_MANY_REDIRECTS｜対処法"
+seo_title: "リダイレクトが多すぎます｜ループの原因と対処"
 description: "「リダイレクトが多すぎます」（ERR_TOO_MANY_REDIRECTS）やログイン画面との往復の対処法。エラーログに何も出ない外部ループと500になる内部ループを見分ける。siteurl不一致やSSL強制が原因のケースを実測。"
 keywords: "リダイレクトが多すぎます, ERR_TOO_MANY_REDIRECTS, WordPress リダイレクト ループ, ログイン 戻される 繰り返し, リダイレクトを繰り返しました"
 category: 障害報告

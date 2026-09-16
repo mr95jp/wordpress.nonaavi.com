@@ -1,7 +1,7 @@
 ---
 title: "SSL化したら画像・CSSが表示されない（混在コンテンツ）の対処法"
 slug: ssl-mixed-content
-seo_title: "WordPress SSL化 画像・CSS 読み込めない｜混在コンテンツ対処法"
+seo_title: "SSL化で画像・CSS が出ない｜混在コンテンツ対処"
 description: "SSL化（https化）したら画像やCSSが読み込めない・鍵マークに警告が出る時の対処法。原因は混在コンテンツ。DB内のhttp://の検出と置換手順、guidを除外する理由、wp-config.phpの定数の落とし穴を実測。"
 keywords: "WordPress SSL化 崩れる, https 画像 表示されない, 混在コンテンツ, mixed content, SSL化 CSS 効かない, http https 置換, 鍵マーク 警告"
 category: 障害報告

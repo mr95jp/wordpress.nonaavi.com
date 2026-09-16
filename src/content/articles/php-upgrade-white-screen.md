@@ -1,7 +1,7 @@
 ---
 title: "PHPを上げたらWordPressが真っ白になった時の対処法"
 slug: php-upgrade-white-screen
-seo_title: "PHP 更新後に WordPress が真っ白｜白画面の原因と直し方"
+seo_title: "PHP 更新後に WordPress が真っ白｜原因と対処"
 description: "PHPのバージョンを上げたらWordPressが真っ白（白い画面）になった時の対処法。白画面になる設定の組み合わせは1通りだけ。display_errorsとエラーハンドラで見え方が4通りに変わること、opcacheが警告を隠すことを実測。"
 keywords: "PHP バージョン 上げたら 真っ白, PHP アップデート WordPress 真っ白, PHP8 白画面, WordPress 白画面 直し方, display_errors, WSOD"
 category: 障害報告

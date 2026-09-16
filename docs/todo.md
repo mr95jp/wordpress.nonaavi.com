@@ -44,7 +44,23 @@
 
 ---
 
-## 3. その他
+## 3. 2026-09-16 に対応した SEO・見やすさの改善
+
+- [x] OG 画像を全ページ分生成（`pnpm og` → `public/og/`）。日本語フォントの都合で Mac で作って git に入れる
+- [x] title を全角 32 文字相当以内に short 化（記事 32 本・ハブ 7・索引 2）
+- [x] description を 120 文字以内に（7 本）
+- [x] 記事末尾に執筆者と公開日・更新日・検証日を表示
+- [x] 構造化データの `dateModified` が `datePublished` より前になる不整合を修正
+- [x] サイトマップに `lastmod` を出力
+- [x] スマホのタップ領域を拡大（ヘッダー・目次・一覧のリンク）
+- [x] `check:site` に title / description / og:image の検査を追加
+
+残っている改善案:
+
+- [ ] `mobile-layout-broken` から他記事へのリンクが 1 本だけ
+- [ ] OG 画像に記事の「実測値」を 1 つ入れると、共有時の訴求が上がる（要検討）
+
+## 4. その他
 
 - [ ] Search Console にサイトマップ `sitemap-index.xml` を送信する
 - [ ] サイト名「WP復旧ラボ」と、`plugin-conflict-diagnosis` の参考文献にある「WP復旧本舗」が似ている。混同されないか検討する

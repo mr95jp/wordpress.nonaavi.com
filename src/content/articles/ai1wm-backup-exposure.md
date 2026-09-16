@@ -1,7 +1,7 @@
 ---
 title: "All-in-One WP Migration の書き出したバックアップは外から取れる — 実測と対策"
 slug: ai1wm-backup-exposure
-seo_title: "All-in-One WP Migration バックアップ 公開｜危険性と対策・上限エラー"
+seo_title: "All-in-One WP Migration｜.wpress 公開の危険と対策"
 description: "All-in-One WP Migration で書き出した .wpress が未ログインのまま取得できるかを実測。中身にはデータベースがそのまま入っている。置き場所の保護、自動削除の有無、「インポートできない」上限エラーの直し方まで。"
 keywords: "All-in-One WP Migration 危険, wpress 公開, All-in-One WP Migration インポートできない, 最大アップロードサイズ 超過, バックアップ 漏洩, ai1wm-backups"
 category: 障害報告

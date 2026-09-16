@@ -1,8 +1,8 @@
 ---
 title: "サイトが壊れているのに監視は正常（HTTP 200）— WordPressの落とし穴"
 slug: http-200-when-site-is-down
-seo_title: "WordPress 壊れてるのに監視 正常｜200で返る4つの障害"
-description: "サイトが死んでいるのに監視がHTTP 200を返す仕組みを、別原因の4障害で実測。display_errorsが有効だとヘッダが先に確定する。REST APIのFatal errorは設定に関係なく200で返り、admin-ajaxは500になる理由も解説。"
+seo_title: "壊れているのに監視は正常｜200 で返る障害"
+description: "サイトが死んでいるのに監視がHTTP 200を返す仕組みを、別原因の4障害で実測。display_errorsが有効だとヘッダが先に確定する。REST APIのFatalが200で返る理由も解説。"
 keywords: "WordPress 監視 正常 なのに 壊れてる, 死活監視 200, サイト ダウン 検知できない, display_errors 200, 監視 すり抜け, WordPress REST API エラー 200, Unexpected token <"
 category: 技術メモ
 tags: [wordpress, 監視, php, display_errors, http-status, rest-api]

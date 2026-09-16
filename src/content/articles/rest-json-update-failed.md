@@ -1,7 +1,7 @@
 ---
 title: "「更新に失敗しました。返答が正しいJSONレスポンスではありません」の対処法"
 slug: rest-json-update-failed
-seo_title: "WordPress 更新に失敗しました JSONレスポンス｜原因と対処法"
+seo_title: "更新に失敗しました JSON レスポンス｜原因と対処"
 description: "投稿保存時の「更新に失敗しました。返答が正しいJSONレスポンスではありません」の対処法。REST APIがJSONを返していないのが原因。.htaccessの遮断・REST内のFatal・nonce切れの見分け方を実測で解説。"
 keywords: "更新に失敗しました, 正しいJSONレスポンスではありません, WordPress 保存できない JSON, ブロックエディター 更新できない, REST API エラー"
 category: 障害報告

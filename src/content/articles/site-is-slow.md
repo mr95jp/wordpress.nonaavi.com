@@ -1,7 +1,7 @@
 ---
 title: "WordPressが重い・遅い時の対処法 — 原因を数値で確かめる"
 slug: site-is-slow
-seo_title: "WordPress 重い・表示が遅い・管理画面 遅い｜原因と対処法"
+seo_title: "WordPress が重い・遅い｜原因と対処法"
 description: "WordPressが重い・表示速度が遅い・管理画面だけ遅い時の対処法。autoloadの肥大は42KBで0.7ms→12MBで15ms、外部通信は遮断されると5秒待ちになることを実測。原因を数値で確かめてから対策する。"
 keywords: "WordPress 重い, WordPress 遅い, 表示速度 遅い, 管理画面 遅い, サイト 重い 原因, autoload, TTFB 遅い"
 category: 技術メモ

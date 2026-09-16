@@ -1,7 +1,7 @@
 ---
 title: "WordPressサイトヘルスの「重大な問題」の意味と対処法"
 slug: site-health-reading
-seo_title: "WordPress サイトヘルス 重大な問題｜意味と偽陽性の見分け方"
+seo_title: "WordPress サイトヘルス｜重大な問題の読み方"
 description: "サイトヘルスに出る「重大な問題」の意味と対処法。REST APIやループバックの検査はサイト自身への通信で判定するため、正常でも赤くなる偽陽性がある。実害のある項目とそうでない項目を実測で仕分け。"
 keywords: "WordPress サイトヘルス 重大な問題, サイトヘルス REST API エラー, ループバック 失敗, サイトヘルス 見方, 推奨されている改善"
 category: 技術メモ

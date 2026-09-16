@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { hubOf } from '../lib/hubs';
-import { OPERATOR_NAME, SITE_NAME, formatDate, isoDate } from '../lib/site';
+import { OPERATOR_NAME, OPERATOR_PROFILE, SITE_NAME, formatDate, isoDate } from '../lib/site';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -28,7 +28,10 @@ const related = relatedSlugs.map((s) => bySlug.get(s)).filter((a) => a !== undef
 
 const url = new URL(`/${entry.id}/`, Astro.site).href;
 const hubUrl = new URL(`/topics/${hub.id}/`, Astro.site).href;
-const modified = data.updated ?? data.verified;
+const published = data.published ?? data.verified;
+// 本文を直した日。updated が無ければ公開日（検証日より後になることがあるため published と比べる）
+const modified =
+  data.updated ?? (published.getTime() > data.verified.getTime() ? published : data.verified);
 
 const jsonLd = [
   {
@@ -36,7 +39,7 @@ const jsonLd = [
     '@type': 'TechArticle',
     headline: data.title,
     description: data.description,
-    datePublished: isoDate(data.published ?? data.verified),
+    datePublished: isoDate(published),
     dateModified: isoDate(modified),
     mainEntityOfPage: url,
     author: { '@type': 'Person', name: OPERATOR_NAME, url: new URL('/about/', Astro.site).href },
@@ -102,6 +105,23 @@ const jsonLd = [
     <div class="prose">
       <Content />
     </div>
+
+    <aside class="byline">
+      <p>
+        執筆: <strong>{OPERATOR_NAME}</strong>（{OPERATOR_PROFILE}）・<a href="/about/">このサイトについて</a>
+      </p>
+      <p>
+        公開 <time datetime={isoDate(published)}>{formatDate(published)}</time>
+        {
+          modified.getTime() !== published.getTime() && (
+            <>
+              ／ 更新 <time datetime={isoDate(modified)}>{formatDate(modified)}</time>
+            </>
+          )
+        }
+        ／ 検証 <time datetime={isoDate(data.verified)}>{formatDate(data.verified)}</time>
+      </p>
+    </aside>
   </article>
 
   {

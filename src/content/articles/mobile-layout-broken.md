@@ -1,7 +1,7 @@
 ---
 title: "WordPressでスマホだけレイアウトが崩れる時の対処法"
 slug: mobile-layout-broken
-seo_title: "WordPress スマホ 崩れる・スマホだけ表示がおかしいの直し方"
+seo_title: "WordPress スマホだけ崩れる｜原因の切り分け"
 description: "PCでは正常なのにスマホだけレイアウトが崩れる時の対処法。まずサーバーが同じHTMLを返しているかを確認すると原因が半分に絞れる。キャッシュがPC版を返す、viewport欠落、横スクロールの犯人の探し方を実測。"
 keywords: "WordPress スマホ 崩れる, スマホだけ 崩れる, レスポンシブ 崩れる, スマホ 表示 おかしい, モバイル レイアウト崩れ, viewport"
 category: 障害報告

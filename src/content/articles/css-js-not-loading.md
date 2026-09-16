@@ -1,7 +1,7 @@
 ---
 title: "WordPressでCSSが効かない・JavaScriptが動かない時の対処法"
 slug: css-js-not-loading
-seo_title: "WordPress CSS 効かない・デザイン崩れ・JS 動かないの直し方"
+seo_title: "WordPress CSS が効かない・JS が動かない対処"
 description: "WordPressでCSSが効かない・デザインが崩れる・JavaScriptが動かない時の対処法。まず読み込まれているかを確認する。存在しないCSSは404でも20KBのHTMLが返るため転送量では判断できない実測。"
 keywords: "WordPress CSS 効かない, デザイン 崩れる, JavaScript 動かない, スタイル 反映されない, CSS 読み込まれない, jQuery 動かない, $ is not a function"
 category: 障害報告

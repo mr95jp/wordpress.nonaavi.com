@@ -1,7 +1,7 @@
 ---
 title: "WordPressのRSS・サイトマップだけ壊れる時の対処法（サイトは正常）"
 slug: feed-sitemap-broken
-seo_title: "WordPress RSS 表示されない・サイトマップ エラー｜XML が壊れる原因"
+seo_title: "WordPress RSS・サイトマップが壊れる原因"
 description: "サイトは正常なのにRSS（/feed/）やサイトマップだけ壊れる・エラーになる時の対処法。functions.php末尾の空白1つでXMLが壊れる、サイトマップ404はblog_public=0が原因、などを実測で解説。"
 keywords: "WordPress RSS 表示されない, feed 壊れる, サイトマップ エラー, wp-sitemap.xml 404, サイトマップ 読み取れませんでした, RSS フィード エラー, XML パースエラー"
 category: 障害報告

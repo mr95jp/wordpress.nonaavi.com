@@ -1,7 +1,7 @@
 ---
 title: "WordPressで予約投稿されない・公開されない時の対処法"
 slug: scheduled-post-missed
-seo_title: "WordPress 予約投稿 されない・失敗しました｜原因と対処法"
+seo_title: "WordPress 予約投稿されない｜原因と対処法"
 description: "予約した時刻を過ぎても公開されない・「予約投稿に失敗しました」の対処法。WP-Cronはサイト自身へのアクセスで動くため、アクセスが無い・ループバックが失敗すると動かないことを実測。手動実行と恒久対策も。"
 keywords: "WordPress 予約投稿 されない, 予約投稿 失敗しました, 予約 公開されない, WP-Cron 動かない, 予約投稿 遅れる"
 category: 障害報告

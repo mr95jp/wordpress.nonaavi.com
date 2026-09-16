@@ -1,8 +1,8 @@
 ---
 title: "WordPressの管理画面だけ表示が崩れる時の直し方"
 slug: admin-styles-broken
-seo_title: "WordPress 管理画面 表示が崩れる・レイアウト崩れの対処法"
-description: "WordPressの管理画面だけレイアウトが崩れる・CSSが効かない時の対処法。load-styles.php / load-scripts.php が通っているかを確認するだけで原因が絞れる。セキュリティ設定やキャッシュが原因のケースを実測。"
+seo_title: "WordPress 管理画面だけ崩れる｜原因と対処"
+description: "WordPressの管理画面だけ崩れる・CSSが効かない時の対処法。load-styles.php / load-scripts.php が通っているかだけで原因が絞れることを実測。"
 keywords: "WordPress 管理画面 崩れる, 管理画面 レイアウト崩れ, 管理画面 CSS 効かない, ダッシュボード 崩れる, load-styles.php"
 category: 障害報告
 tags: [wordpress, 管理画面, css, load-styles, キャッシュ]

@@ -1,7 +1,7 @@
 ---
 title: "WordPressにログインできない時の対処法 — 症状別の直し方4パターン"
 slug: login-impossible
-seo_title: "WordPress ログインできない｜原因と対処法（パスワードは合ってる）"
+seo_title: "WordPress ログインできない｜症状別の対処法"
 description: "WordPressの管理画面にログインできない時の対処法。パスワードは合っているのに入れない、ログイン画面に戻される等を症状別に4パターンで解説。Cookie・サイトURL設定・メール・Fatalの見分け方を実測。"
 keywords: "WordPress ログインできない, 管理画面 入れない, wp-admin ログインできない, ログイン画面 戻される, パスワード 合ってるのに ログインできない"
 category: 障害報告

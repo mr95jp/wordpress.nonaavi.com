@@ -1,7 +1,7 @@
 ---
 title: "WordPressのセキュリティ確認 — 攻撃者から何が見えているか実測"
 slug: attack-surface-audit
-seo_title: "WordPress セキュリティ 確認｜ユーザー名・バージョンの漏洩対策"
+seo_title: "WordPress セキュリティ確認｜漏れている情報"
 description: "既定のWordPressが攻撃者に何を見せているかを実測。ユーザー名が4経路（REST/?author/ログインエラー/XML-RPC）から漏れる。効かない対策（is_adminやxmlrpc_enabled）も実測で特定。"
 keywords: "WordPress セキュリティ 対策, ユーザー名 漏洩, ユーザー列挙, xmlrpc 対策, WordPress 脆弱性 確認, ブルートフォース 対策"
 category: 技術メモ

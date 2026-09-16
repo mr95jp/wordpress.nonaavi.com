@@ -1,7 +1,7 @@
 ---
 title: "WordPressの改ざんチェックの落とし穴 — verify-checksumsだけでは足りない"
 slug: verify-checksums-blind-spots
-seo_title: "WordPress 改ざん チェック｜verify-checksums の穴と正しい確認"
+seo_title: "WordPress 改ざんチェック｜見落とす 3 つの穴"
 description: "wp core verify-checksumsがSuccessでも改ざんは見つからないことを実測。コアしか見ずwp-contentは素通り、テーマ用コマンドは存在しない等3つの穴。git diffが唯一の全カバー経路。"
 keywords: "WordPress 改ざん チェック, verify-checksums, wp-content 改ざん, 改ざん 検知, ファイル 改ざん 確認, WordPress 検知"
 category: 障害報告

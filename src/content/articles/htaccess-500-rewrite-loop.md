@@ -1,8 +1,8 @@
 ---
 title: "WordPressで500エラー（.htaccess原因）の対処法 — トップは見えるのに記事だけ落ちる"
 slug: htaccess-500-rewrite-loop
-seo_title: "WordPress 500 Internal Server Error｜.htaccess 原因の直し方"
-description: "WordPressの500 Internal Server Errorのうち.htaccessが原因のケースの対処法。トップは見えるのに個別記事だけ500になる理由、AH00124（内部リライトループ）とタイプミスの見分け方をApache/nginx両方で実測。"
+seo_title: "WordPress 500 エラー｜.htaccess が原因の直し方"
+description: "WordPressの500エラーのうち.htaccessが原因のケースの対処法。トップは見えるのに記事だけ500になる理由と、AH00124（リライトループ）とタイプミスの見分け方を実測。"
 keywords: "WordPress 500エラー, 500 Internal Server Error, .htaccess 500, AH00124, 記事だけ 500, 個別ページ 500, RewriteBase"
 category: 障害報告
 tags: [wordpress, apache, htaccess, nginx, 500エラー]
