@@ -33,7 +33,10 @@ pnpm og               # OG 画像を public/og/ に生成（タイトルを変�
 ```
 src/content/articles/     記事（1 ファイル 1 記事。ファイル名 = URL）
 src/content/screenshots/  記事内の画像。ビルド時に WebP に変換される
-src/content/indexes/      symptoms.md / plugins.md（索引ページ）
+src/content/indexes/      symptoms.md / plugins.md（索引ページ。ラボと同期する）
+src/lib/plugin-index.ts   plugins.md の表を読み、プラグイン名ごとに組み替える
+                          （/plugins/ のセレクトボックスと見出しはここから自動生成。
+                           プラグインを足すときはラボの plugins.md に行を足すだけ）
 src/lib/hubs.ts           症状別ハブ 7 つ。記事の所属と並び順はここだけで管理
 src/lib/markdown.mjs      .md リンクの書き換え・表のラップ・再現手順の折りたたみ
 src/pages/                ルーティング（[slug] / topics/[hub] / symptoms / plugins / about）

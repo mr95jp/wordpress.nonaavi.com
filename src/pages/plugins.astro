@@ -1,18 +1,138 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import { readPluginIndex } from '../lib/plugin-index';
 
-const entry = await getEntry('indexes', 'plugins');
-if (!entry) throw new Error('src/content/indexes/plugins.md がありません');
-const { Content } = await render(entry);
+const { plugins } = readPluginIndex();
+const measured = plugins.filter((p) => p.measured);
+
+// 「専用記事」のような汎用的なリンク文言は、記事のタイトルに差し替える
+const titles = new Map((await getCollection('articles')).map((a) => [a.id, a.data.title]));
+const GENERIC_TEXT = /^(専用記事|同上|詳細|こちら)$/;
+const linkText = (text: string, href: string) =>
+  GENERIC_TEXT.test(text) ? (titles.get(href.replace(/\//g, '')) ?? text) : text;
 ---
 
 <Base
   title="プラグイン名から探す｜WordPress 不具合の原因"
-  description="Contact Form 7、SiteGuard、All-in-One WP Migration、キャッシュ系、セキュリティ系など、プラグイン名から不具合の本当の原因と対処法の記事を引ける索引です。"
+  description="Contact Form 7、SiteGuard、All-in-One WP Migration、キャッシュ系、セキュリティ系など、プラグイン名から不具合の本当の原因と対処法を引ける索引です。"
 >
   <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">トップ</a> › プラグイン名から探す</nav>
-  <div class="prose">
-    <Content />
+
+  <h1>プラグイン名から不具合の原因を探す</h1>
+  <p class="lead">
+    「Contact Form 7 メール 届かない」のように、プラグイン名から探すための索引です。
+    実際に調べてみると、<strong>プラグインは引き金であって、原因は別の層にある</strong>ことが大半でした。
+    プラグインの設定を触る前に、下の表で本当の原因を確認してください。
+  </p>
+
+  <div class="plugin-filter">
+    <label for="plugin-select">プラグインを選ぶ</label>
+    <select id="plugin-select">
+      <option value="">すべて表示（{plugins.length} 件）</option>
+      {
+        plugins.map((p) => (
+          <option value={p.id}>
+            {p.name}
+            {p.measured ? '（専用記事あり）' : ''}
+          </option>
+        ))
+      }
+    </select>
+    <p class="filter-note" id="filter-note" hidden></p>
   </div>
+
+  <p class="measured-note">
+    <strong>専用記事があるのは {measured.length} つだけです。</strong>
+    プラグイン固有の挙動を検証環境で実測できたものだけ、記事にしています（{
+      measured.map((p) => p.name).join('、')
+    }）。
+  </p>
+
+  {
+    plugins.map((p) => (
+      <section class="plugin" id={p.id} data-plugin={p.id}>
+        <h3>
+          {p.name}
+          {p.measured && <span class="badge">実測</span>}
+        </h3>
+        <ul class="symptoms">
+          {p.rows.map((row) => (
+            <li>
+              <span class="symptom">{row.symptom}</span>
+              {row.cause && <span class="cause">実際の原因: {row.cause}</span>}
+              {row.links.length > 0 && (
+                <span class="links">
+                  {row.links.map((l) => (
+                    <a href={l.href}>{linkText(l.text, l.href)}</a>
+                  ))}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+        {p.note && <p class="plugin-note">{p.note}</p>}
+      </section>
+    ))
+  }
+
+  <section>
+    <h2>プラグインを疑う前に取る値</h2>
+    <p>
+      プラグイン名で検索する前に、これを取ると原因の層が分かります。取り方は
+      <a href="/symptoms/#最初に取る-4-つの値">症状から探す</a>の「最初に取る 4 つの値」にまとめてあります。
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>観測</th><th>プラグインの問題か</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ページ本体が 500</td><td>プラグインかテーマの Fatal。<strong>両方有効なときだけ落ちるなら競合</strong></td></tr>
+          <tr><td>アセットが 403</td><td>サーバー設定かセキュリティプラグイン</td></tr>
+          <tr><td>REST が JSON でない</td><td>セキュリティプラグインか Fatal</td></tr>
+          <tr><td><code>Set-Cookie</code> が 0</td><td><strong>プラグインではない</strong>（出力が混ざっている）</td></tr>
+          <tr><td>全部 200 なのに壊れている</td><td>キャッシュ・結合・JS エラー</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>更新で壊れたとき</h2>
+    <p>
+      <strong>「有効化したら壊れた」はほぼ起きません。</strong>WordPress は有効化の前にファイルを読み込む検査をして、
+      Fatal になるなら有効化を中止します（実測）。実際に落ちるのは<strong>両方が有効なまま、更新で衝突が生まれたとき</strong>です。
+    </p>
+    <p><a href="/plugin-conflict-diagnosis/">プラグインの競合を切り分ける</a></p>
+  </section>
+
+  <script>
+    const select = document.getElementById('plugin-select') as HTMLSelectElement | null;
+    const note = document.getElementById('filter-note');
+    const sections = [...document.querySelectorAll<HTMLElement>('section.plugin')];
+
+    const apply = (value: string) => {
+      for (const section of sections) section.hidden = value !== '' && section.dataset.plugin !== value;
+      if (note) {
+        const selected = select?.selectedOptions[0]?.textContent?.trim() ?? '';
+        note.hidden = value === '';
+        note.textContent = value === '' ? '' : `${selected} に絞り込みました。ほかも見るときは「すべて表示」を選びます。`;
+      }
+      const target = value && document.getElementById(value);
+      if (target) target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    };
+
+    select?.addEventListener('change', () => {
+      apply(select.value);
+      history.replaceState(null, '', select.value ? `#${select.value}` : location.pathname);
+    });
+
+    // /plugins/#siteguard-wp-plugin のように開いたときは、その 1 件だけを出す
+    const fromHash = decodeURIComponent(location.hash.slice(1));
+    if (fromHash && select && [...select.options].some((o) => o.value === fromHash)) {
+      select.value = fromHash;
+      apply(fromHash);
+    }
+  </script>
 </Base>

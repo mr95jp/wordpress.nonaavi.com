@@ -381,6 +381,90 @@ details.repro[open] {
   font-size: 0.9375rem;
 }
 
+/* プラグイン索引 */
+.plugin-filter {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg);
+  padding-block: 0.75rem;
+  margin-block: 1.5rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.plugin-filter label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+.plugin-filter select {
+  width: 100%;
+  max-width: 28rem;
+  font: inherit;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+}
+.filter-note,
+.measured-note {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0.5rem 0 0;
+}
+.measured-note {
+  margin-bottom: 1.5rem;
+}
+
+section.plugin {
+  margin-block: 1.5rem;
+}
+section.plugin h3 {
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+section.plugin h3 .badge {
+  font-size: 0.6875rem;
+}
+.symptoms {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.symptoms li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
+}
+.symptoms .symptom {
+  display: block;
+  font-weight: 700;
+}
+.symptoms .cause,
+.symptoms .links {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+.symptoms .links a {
+  display: inline-block;
+  margin-right: 0.75rem;
+  padding-block: 0.25rem;
+}
+.plugin-note {
+  font-size: 0.875rem;
+  margin: 0.6rem 0 0;
+}
+
 .list {
   padding-left: 1.2rem;
 }
