@@ -42,6 +42,7 @@ const jsonLd = [
     datePublished: isoDate(published),
     dateModified: isoDate(modified),
     mainEntityOfPage: url,
+    image: new URL(`/og/${entry.id}.png`, Astro.site).href,
     author: { '@type': 'Person', name: OPERATOR_NAME, url: new URL('/about/', Astro.site).href },
     publisher: { '@type': 'Organization', name: SITE_NAME, url: Astro.site?.href },
   },

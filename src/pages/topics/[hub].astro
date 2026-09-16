@@ -19,6 +19,22 @@ const articles = hub.articles.map((slug) => {
 const jsonLd = [
   {
     '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: hub.title,
+    description: hub.description,
+    url: new URL(`/topics/${hub.id}/`, Astro.site).href,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: articles.map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: new URL(`/${a.id}/`, Astro.site).href,
+        name: a.data.title,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'トップ', item: Astro.site?.href },

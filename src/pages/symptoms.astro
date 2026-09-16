@@ -5,11 +5,29 @@ import Base from '../layouts/Base.astro';
 const entry = await getEntry('indexes', 'symptoms');
 if (!entry) throw new Error('src/content/indexes/symptoms.md がありません');
 const { Content } = await render(entry);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'WordPress の不具合を症状から探す',
+    url: new URL('/symptoms/', Astro.site).href,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'トップ', item: Astro.site?.href },
+      { '@type': 'ListItem', position: 2, name: '症状から探す', item: new URL('/symptoms/', Astro.site).href },
+    ],
+  },
+];
 ---
 
 <Base
   title="症状から探す｜WordPress 不具合の原因の引き方"
   description="真っ白、500エラー、ログインできない、表示が崩れる。見えている症状と直前にやったことから、WordPressの不具合の原因と対処法の記事を引ける索引です。"
+  jsonLd={jsonLd}
 >
   <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">トップ</a> › 症状から探す</nav>
   <div class="prose">

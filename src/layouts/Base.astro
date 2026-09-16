@@ -37,6 +37,7 @@ const ogImage = new URL(`/og${path === '' ? '/index' : path}.png`, Astro.site).h
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href="/rss.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
     <!-- Google Tag Manager -->
@@ -66,6 +67,7 @@ const ogImage = new URL(`/og${path === '' ? '/index' : path}.png`, Astro.site).h
         style="display:none;visibility:hidden"></iframe></noscript
     >
     <!-- End Google Tag Manager (noscript) -->
+    <a class="skip-link" href="#main">本文へ移動</a>
     <header class="site-header">
       <div class="wrap">
         <a class="site-name" href="/">{SITE_NAME}</a>
@@ -76,13 +78,16 @@ const ogImage = new URL(`/og${path === '' ? '/index' : path}.png`, Astro.site).h
         </nav>
       </div>
     </header>
-    <main class="wrap">
+    <main class="wrap" id="main">
       <slot />
     </main>
     <footer class="site-footer">
       <div class="wrap">
         <p><a href="/">{SITE_NAME}</a> — 実際に壊して測った値だけを書いています。</p>
-        <p><a href="/about/">このサイトについて</a> ・ <a href="/privacy/">プライバシーポリシー</a></p>
+        <p>
+          <a href="/about/">このサイトについて</a> ・ <a href="/privacy/">プライバシーポリシー</a> ・
+          <a href="/rss.xml">RSS</a>
+        </p>
       </div>
     </footer>
     <script>

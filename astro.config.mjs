@@ -1,6 +1,6 @@
 // @ts-check
 import { readdirSync, readFileSync } from 'node:fs';
-import { unified } from '@astrojs/markdown-remark';
+import { rehypeHeadingIds, unified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 import remarkCjkFriendly from 'remark-cjk-friendly';
@@ -49,7 +49,8 @@ export default defineConfig({
     processor: unified({
       // 「…。**次の文」のように約物に隣接する ** を CommonMark は太字にしない
       remarkPlugins: [remarkCjkFriendly, remarkArticleLinks],
-      rehypePlugins: [rehypeArticleLayout],
+      // 見出しの id を付ける処理を先に走らせる（後ろだと id が無く、見出しリンクを足せない）
+      rehypePlugins: [rehypeHeadingIds, rehypeArticleLayout],
       // 記事中の "--skip-plugins" や引用符を記号に変換させない
       smartypants: false,
     }),

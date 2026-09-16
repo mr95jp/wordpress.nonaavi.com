@@ -107,6 +107,45 @@ main.wrap {
   padding-block: 1.5rem;
 }
 
+/* キーボード操作 */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  background: var(--surface);
+  color: var(--accent);
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 0 0 var(--radius) 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 見出しへのリンク */
+.heading-link {
+  margin-left: 0.4rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 400;
+  opacity: 0;
+}
+h2:hover > .heading-link,
+h3:hover > .heading-link,
+.heading-link:focus-visible {
+  opacity: 1;
+}
+@media (hover: none) {
+  .heading-link {
+    opacity: 0.5;
+  }
+}
+
 /* headings */
 h1 {
   font-size: clamp(1.45rem, 4.5vw, 1.9rem);
@@ -254,6 +293,19 @@ pre.astro-code {
   margin: 0 0 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  /* 横にスクロールできることを、右端の影で伝える */
+  background:
+    linear-gradient(to right, var(--surface) 30%, transparent),
+    linear-gradient(to left, var(--surface) 30%, transparent) 100% 0,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.18), transparent),
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.18), transparent) 100% 0;
+  background-repeat: no-repeat;
+  background-size:
+    3rem 100%,
+    3rem 100%,
+    0.8rem 100%,
+    0.8rem 100%;
+  background-attachment: local, local, scroll, scroll;
 }
 table {
   border-collapse: collapse;
