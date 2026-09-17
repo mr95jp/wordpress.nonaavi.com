@@ -153,6 +153,8 @@ export const HUBS: Hub[] = [
       'config-file-exposure',
       'ai1wm-backup-exposure',
       'broken-access-control',
+      'auto-update-not-working',
+      'role-design',
     ],
     rows: [
       { see: '知らない管理者がいる / スパムリンクが埋まっている', suspect: 'データベース側の痕跡', slug: 'compromised-db-side' },
@@ -161,6 +163,8 @@ export const HUBS: Hub[] = [
       { see: '設定ファイルが漏れていないか心配', suspect: '本体ではなくバックアップファイル', slug: 'config-file-exposure' },
       { see: '移行に使ったバックアップが残っていないか心配', suspect: '.wpress が未ログインで取得できる。自動では消えない', slug: 'ai1wm-backup-exposure' },
       { see: 'プラグイン開発で権限チェックが不安', suspect: 'permission_callback・is_admin()', slug: 'broken-access-control' },
+      { see: '自動更新にしているのに更新されていない', suspect: 'プラグインは 1 つずつ有効にしないと対象にならない', slug: 'auto-update-not-working' },
+      { see: '誰にどの権限を割り当てるか決めたい', suspect: '管理者だけが持つ権限は 27 個', slug: 'role-design' },
     ],
   },
   {
