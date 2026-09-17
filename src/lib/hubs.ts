@@ -173,11 +173,13 @@ export const HUBS: Hub[] = [
     lead: 'ステータスコードだけでは判断できません。サイトが死んでいても 200 が返るケースがあります。',
     articles: [
       'where-are-the-logs',
+      'no-audit-log',
       'site-health-reading',
       'http-200-when-site-is-down',
     ],
     rows: [
       { see: 'ログを見ても何も出ていない', suspect: '起動前のエラーは debug.log に入らない', slug: 'where-are-the-logs' },
+      { see: '誰がいつ設定やプラグインを変えたか分からない', suspect: 'WordPress は操作の記録を残さない', slug: 'no-audit-log' },
       { see: 'サイトヘルスに「重大な問題」が出ている', suspect: 'ループバック不通による偽陽性', slug: 'site-health-reading' },
       { see: '監視は正常なのに壊れている', suspect: 'HTTP 200 で返る障害', slug: 'http-200-when-site-is-down' },
       { see: 'REST API のエラーが監視に出ない', suspect: 'REST の Fatal は 200 で返る', slug: 'http-200-when-site-is-down' },
