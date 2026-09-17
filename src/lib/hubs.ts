@@ -155,6 +155,7 @@ export const HUBS: Hub[] = [
       'broken-access-control',
       'auto-update-not-working',
       'role-design',
+      'backup-and-restore',
     ],
     rows: [
       { see: '知らない管理者がいる / スパムリンクが埋まっている', suspect: 'データベース側の痕跡', slug: 'compromised-db-side' },
@@ -165,6 +166,7 @@ export const HUBS: Hub[] = [
       { see: 'プラグイン開発で権限チェックが不安', suspect: 'permission_callback・is_admin()', slug: 'broken-access-control' },
       { see: '自動更新にしているのに更新されていない', suspect: 'プラグインは 1 つずつ有効にしないと対象にならない', slug: 'auto-update-not-working' },
       { see: '誰にどの権限を割り当てるか決めたい', suspect: '管理者だけが持つ権限は 27 個', slug: 'role-design' },
+      { see: 'バックアップが本当に戻せるか不安', suspect: '標準のエクスポートには設定もプラグインも含まれない', slug: 'backup-and-restore' },
     ],
   },
   {
