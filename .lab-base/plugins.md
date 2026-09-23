@@ -15,6 +15,7 @@
 | **SiteGuard WP Plugin** | 有効化した瞬間に `wp-login.php` が 404。ログインできない | [新しい URL は /wp-admin/ が教えてくれる](articles/siteguard-lockout.md) |
 | **Contact Form 7** | 送信ボタンがぐるぐる回ったまま止まらない | [「キャッシュで nonce が切れる」は現行版では起きない](articles/contact-form-7-not-sending.md) |
 | **All-in-One WP Migration** | 書き出したバックアップが公開領域に残る / インポートできない | [.wpress は未ログインで取得できる](articles/ai1wm-backup-exposure.md) |
+| **Yoast SEO / All in One SEO** | 送信済みのサイトマップが読み取れなくなる / `robots.txt` が変わる | [有効化しただけで URL が変わる](articles/seo-plugin-sitemap-url.md) |
 
 国内のレンタルサーバーが標準で導入していることが多く、遭遇率が高いため実測した。
 **ログイン URL の形（`/login_数字.php`）、ロックの解除条件、既定でオフの機能**まで
@@ -106,7 +107,9 @@
 
 | プラグイン | 症状 | 実際の原因 | 記事 |
 |---|---|---|---|
-| Yoast SEO と Rank Math など 2 つ | meta タグが 2 つ出る | どちらも `wp_head` に出力している | [プラグインの競合](articles/plugin-conflict-diagnosis.md) |
+| Yoast SEO / All in One SEO | **送信済みのサイトマップが読めなくなった** | 有効化しただけで URL が `/sitemap_index.xml` に変わる（実測済み） | [サイトマップの URL が変わる](articles/seo-plugin-sitemap-url.md) |
+| Yoast SEO と All in One SEO など 2 つ | meta タグが 2 つ出る | どちらも `wp_head` に出力している（canonical・og:title が 2 本。実測済み） | [同上](articles/seo-plugin-sitemap-url.md) / [プラグインの競合](articles/plugin-conflict-diagnosis.md) |
+| SEO 系全般 | `robots.txt` を編集していないのに変わった | プラグインが動的生成の内容を差し替える（`Disallow: /wp-admin/` が消える） | [サイトマップの URL が変わる](articles/seo-plugin-sitemap-url.md) |
 | SEO 系全般 | サイトマップが 404 | `blog_public = 0`（検索エンジンのインデックス設定） | [RSS とサイトマップだけ壊れる](articles/feed-sitemap-broken.md) |
 
 ---

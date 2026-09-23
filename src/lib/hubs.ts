@@ -130,12 +130,13 @@ export const HUBS: Hub[] = [
     description:
       'WordPressが重い、管理画面だけ遅い、Googleの検索結果に出てこない、RSSやサイトマップだけ壊れる。数値で原因を確かめる方法を実測で解説します。',
     lead: '「重い」も「検索に出ない」も、推測で設定を変える前に数値で確かめられます。',
-    articles: ['site-is-slow', 'not-indexed-by-google', 'feed-sitemap-broken'],
+    articles: ['site-is-slow', 'not-indexed-by-google', 'feed-sitemap-broken', 'seo-plugin-sitemap-url'],
     rows: [
       { see: '全ページが一律に遅い', suspect: 'wp_options の autoload 肥大', slug: 'site-is-slow' },
       { see: '管理画面だけ遅い', suspect: '外部通信の待ち', slug: 'site-is-slow' },
       { see: '検索結果に出てこない', suspect: 'noindex・サイトマップ 404', slug: 'not-indexed-by-google' },
       { see: 'RSS / サイトマップだけ壊れる', suspect: 'XML の前に余計な出力がある', slug: 'feed-sitemap-broken' },
+      { see: 'Search Console がサイトマップを読み取れない', suspect: 'SEO プラグインで URL が変わった', slug: 'seo-plugin-sitemap-url' },
     ],
   },
   {
@@ -156,6 +157,7 @@ export const HUBS: Hub[] = [
       'auto-update-not-working',
       'role-design',
       'backup-and-restore',
+      'git-managed-auto-update',
     ],
     rows: [
       { see: '知らない管理者がいる / スパムリンクが埋まっている', suspect: 'データベース側の痕跡', slug: 'compromised-db-side' },
@@ -167,6 +169,7 @@ export const HUBS: Hub[] = [
       { see: '自動更新にしているのに更新されていない', suspect: 'プラグインは 1 つずつ有効にしないと対象にならない', slug: 'auto-update-not-working' },
       { see: '誰にどの権限を割り当てるか決めたい', suspect: '管理者だけが持つ権限は 27 個', slug: 'role-design' },
       { see: 'バックアップが本当に戻せるか不安', suspect: '標準のエクスポートには設定もプラグインも含まれない', slug: 'backup-and-restore' },
+      { see: 'git で管理していると自動更新が動かない', suspect: 'バージョン管理下と判定されている', slug: 'git-managed-auto-update' },
     ],
   },
   {

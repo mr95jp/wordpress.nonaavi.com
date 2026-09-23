@@ -96,6 +96,10 @@ in /var/www/html/wp-includes/pluggable.php on line ...
 これが入っていると WordPress は**サイトマップ機能そのものを無効にします。**
 404 が返るのは仕様です。
 
+**SEO プラグインを入れている場合は、見る URL 自体が変わります。**
+`/wp-sitemap.xml` は 301 になり、`/sitemap_index.xml` が本体になります（実測）。
+→ [SEO プラグインを入れるとサイトマップの URL が変わる](seo-plugin-sitemap-url.md)
+
 **開発中にチェックを入れて、公開時に外し忘れる**のが定番の経路です。
 「サイトマップが 404」「検索結果に出ない」が同時に起きていたら、
 まずここを見ます。`noindex` が出ているかは 1 行で確認できます。

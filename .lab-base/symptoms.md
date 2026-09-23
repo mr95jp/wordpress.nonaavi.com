@@ -46,6 +46,7 @@
 | **サイトヘルスに「重大な問題」が出ている** | [何を見ているのか・偽陽性の見分け方](articles/site-health-reading.md) |
 | **誰がいつ設定やプラグインを変えたのか知りたい** | [WordPress は誰が何を変えたか記録しない](articles/no-audit-log.md) — 記録が残るのは投稿本文だけ |
 | **自動更新にしているのに更新されていない** | [自動更新は既定でほとんど動かない](articles/auto-update-not-working.md) — プラグインは 1 つずつ有効にする |
+| **git でデプロイしているのに更新が上がらない** | [git で管理していると自動更新が止まる](articles/git-managed-auto-update.md) — `.git` があるだけで本体もプラグインも止まる |
 | **どのロールを割り当てればいいか分からない** | [ユーザー権限をどう割り当てるか](articles/role-design.md) — 管理者だけが持つ権限は 27 個 |
 | **バックアップが本当に戻せるか不安** | [何を取れば戻せるのか](articles/backup-and-restore.md) — 標準のエクスポートには設定もプラグインも含まれない |
 
@@ -68,6 +69,7 @@
 | **プラグインの脆弱性が心配 / 開発時の権限チェック** | [権限チェックの不備を実測する](articles/broken-access-control.md) |
 | **移行に使ったバックアップが残っていないか心配** | [.wpress は未ログインで取得できる](articles/ai1wm-backup-exposure.md) — 自動では消えない |
 | **誰がログインしたか・失敗が何回あったか調べたい** | [操作ログは残らない](articles/no-audit-log.md) — ログイン履歴も既定では記録されない |
+| **Search Console でサイトマップが読み取れない** | [SEO プラグインで URL が変わる](articles/seo-plugin-sitemap-url.md) — 有効化しただけで `/wp-sitemap.xml` は 301 になる |
 
 ### 表示がおかしい（ページ自体は 200 で返っている）
 

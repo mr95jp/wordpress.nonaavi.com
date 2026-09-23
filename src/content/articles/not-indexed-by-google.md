@@ -91,6 +91,10 @@ Sitemap: http://example.com/wp-sitemap.xml
 `/wp-sitemap.xml` が 404 なら、**まずこの設定を疑います。**
 サーバー設定やパーマリンクの問題ではないことが多いです。
 
+ただし **SEO プラグインを入れていると、この URL は 301 になります**（実測）。
+その場合の本体は `/sitemap_index.xml` です。
+→ [SEO プラグインを入れるとサイトマップの URL が変わる](seo-plugin-sitemap-url.md)
+
 実測では、`blog_public` を 1 にした瞬間に 200 で返るようになりました。
 
 ## 直す場所
