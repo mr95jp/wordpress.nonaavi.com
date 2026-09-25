@@ -6,6 +6,13 @@ description: "git でデプロイしているサイトでは、WordPress が「�
 keywords: "WordPress git 自動更新, WordPress バージョン管理 更新されない, is_vcs_checkout, WordPress デプロイ git, WordPress 自動更新 止まる"
 category: 技術メモ
 tags: [wordpress, 更新, 運用, git, デプロイ]
+summary: |
+  git でデプロイしているサイトでは、WordPress が自動更新を止めます。
+  ・更新画面に「サイトはバージョン管理されているようです。自動更新は無効化されています。」と出ていれば、これです
+  ・本体のマイナー更新も、自動更新を有効にしたプラグインも走りません
+  ・プラグイン一覧の「自動更新」の列は残り、有効化も押せるので、設定できているように見えます
+  ・wp-config.php の定数を見ても分かりません。定数による無効化とは別の経路です
+  ・WordPress より 1 階層上の .git でも検出されます。更新はリポジトリ側で行い、担当と頻度を決めます
 status: draft
 verified: 2026-09-18
 ---
