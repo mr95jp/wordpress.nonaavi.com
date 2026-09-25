@@ -45,7 +45,8 @@
 |---|---|---|---|
 | All-in-One WP Migration | 「最大アップロードサイズを超過しています」 | `upload_max_filesize` / `post_max_size` / `memory_limit` の 3 点 | [画像をアップロードできない](articles/media-upload-failure.md) |
 | All-in-One WP Migration | インポート後に画像が出ない | `uploads` を移していない、URL の不一致 | [画像が表示されない](articles/images-not-displaying.md) |
-| BackWPup / UpdraftPlus | バックアップが動かない | WP-Cron のループバック失敗 | [予約投稿されない](articles/scheduled-post-missed.md) |
+| BackWPup / UpdraftPlus | **バックアップが動かない / いつ取れたか分からない** | 入れただけでは予約が無い。予約してもループバック不通だと走らない（実測済み） | [バックアップが取れていない](articles/backup-plugin-not-running.md) |
+| BackWPup / UpdraftPlus | 取れたバックアップが公開領域に残る | `.htaccess` の拒否は nginx では効かない（実測済み） | [同上](articles/backup-plugin-not-running.md) |
 | 移行全般 | 絵文字が消える / 時刻が 9 時間ずれる | `utf8` と `utf8mb4`、タイムゾーンの不一致 | [移行後の定番 2 つ](articles/emoji-and-timezone.md) |
 | 移行全般 | 復元したのに直らない | ファイルと DB の整合 | [WP-CLI が無い環境での復旧](articles/recovery-without-wp-cli.md) |
 

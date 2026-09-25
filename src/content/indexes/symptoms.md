@@ -67,6 +67,7 @@ WordPress の不具合を、**見えている症状**と**直前にやったこ�
 | **移行に使ったバックアップが残っていないか心配** | [.wpress は未ログインで取得できる](articles/ai1wm-backup-exposure.md) — 自動では消えない |
 | **誰がログインしたか・失敗が何回あったか調べたい** | [操作ログは残らない](articles/no-audit-log.md) — ログイン履歴も既定では記録されない |
 | **Search Console でサイトマップが読み取れない** | [SEO プラグインで URL が変わる](articles/seo-plugin-sitemap-url.md) — 有効化しただけで `/wp-sitemap.xml` は 301 になる |
+| **バックアップが取れているか分からない / 次回の日時が過ぎたまま** | [バックアップが取れていない](articles/backup-plugin-not-running.md) — 入れただけでは予約されず、ループバック不通だと走らない |
 
 ### 表示がおかしい（ページ自体は 200 で返っている）
 

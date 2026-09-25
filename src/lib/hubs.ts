@@ -158,6 +158,7 @@ export const HUBS: Hub[] = [
       'role-design',
       'backup-and-restore',
       'git-managed-auto-update',
+      'backup-plugin-not-running',
     ],
     rows: [
       { see: '知らない管理者がいる / スパムリンクが埋まっている', suspect: 'データベース側の痕跡', slug: 'compromised-db-side' },

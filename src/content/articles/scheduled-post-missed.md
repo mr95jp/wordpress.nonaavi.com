@@ -101,6 +101,9 @@ loopback 失敗: cURL error 7: Failed to connect to localhost:8080 after 0 ms:
 出ていたら、予約投稿も自動更新も止まっています。**
 → [サイトヘルスの「重大な問題」の読み方](site-health-reading.md)
 
+バックアッププラグインも同じ仕組みで動いているため、同時に止まります。
+→ [バックアップが取れていない](backup-plugin-not-running.md)
+
 ## 実測 3: 手動で実行すれば公開される
 
 同じ状態で、WP-CLI から直接実行しました。

@@ -89,6 +89,8 @@ loopback 失敗: cURL error 7: Failed to connect to localhost:8080 after 0 ms:
 
 **サイトヘルスの「重大な問題」として「ループバックリクエストが失敗しました」が
 出ていたら、予約投稿も自動更新も止まっています。**
+バックアッププラグインも同じ仕組みで動いているため、同時に止まります。
+→ [バックアップが取れていない](backup-plugin-not-running.md)
 
 ## 実測 3: 手動で実行すれば公開される
 
