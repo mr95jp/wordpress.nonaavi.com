@@ -1,5 +1,5 @@
 ---
-title: "git で管理していると WordPress の自動更新が止まる — 実測"
+title: "git 管理だと WordPress の自動更新が止まる"
 slug: git-managed-auto-update
 seo_title: "WordPress 自動更新が止まる｜git 管理が原因"
 description: "git でデプロイしているサイトでは、WordPress が「バージョン管理下」と判断して自動更新を止めます。本体もプラグインも更新されなくなるのに、管理画面の「自動更新」の列は残ったままでした。実測した結果をまとめます。"
@@ -13,7 +13,8 @@ summary: |
   ・プラグイン一覧の「自動更新」の列は残り、有効化も押せるので、設定できているように見えます
   ・wp-config.php の定数を見ても分かりません。定数による無効化とは別の経路です
   ・WordPress より 1 階層上の .git でも検出されます。更新はリポジトリ側で行い、担当と頻度を決めます
-status: draft
+status: published
+published: 2026-09-26
 verified: 2026-09-18
 ---
 
